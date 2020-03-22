@@ -1,0 +1,155 @@
+$gradient-background: linear-gradient(120deg, #3498db, #8e44ad);
+$gradient-button: linear-gradient(120deg, #3498db, #8e44ad, #3498db);
+
+a {
+  color: #666;
+  font-size: 14px;
+  display: block;
+}
+.logo {
+  width: 190px;
+  height: 60px;
+  background: #ddd;
+}
+.login-title {
+  flex-basis: 100%;
+}
+#login-page {
+  display: flex;
+  height: 90vh;
+  @media only screen and (max-width: 600px) {
+    flex-wrap: wrap;
+  }
+}
+.login {
+  width: 30%;
+  background: #fff;
+  padding: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  text-align: center;
+
+  @media only screen and (max-width: 600px) {
+    width: 90%;
+    padding: 25px;
+  }
+}
+.login a {
+  margin-top: 25px;
+}
+.form-login label {
+  text-align: left;
+  font-size: 13px;
+  margin-top: 5px;
+  display: block;
+  color: #666;
+}
+.input-email,
+.input-password {
+  //width: 100%;
+  background: #ddd;
+  border-radius: 5px;
+  margin: 4px 0 8px 0;
+  padding: 10px;
+  float: left;
+  display: flex;
+
+  mat-icon {
+    margin-right: 10px;
+    color: darkslateblue;
+  }
+}
+.icon {
+  padding: 4px;
+  color: #666;
+  min-width: 30px;
+  text-align: center;
+}
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  border: 0;
+  background: none;
+  font-size: 16px;
+  padding: 4px 0;
+  outline: none;
+}
+.login-button {
+  width: 100%;
+  border: 0;
+  color: #fff;
+  display: inline-block;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 10px;
+  border: none;
+  outline: none;
+  margin-top: 2rem;
+  color: white;
+  font-size: 0.9rem;
+  border-radius: 3px;
+  cursor: pointer;
+  background: $gradient-button;
+  background-size: 200%;
+  transition: 0.5s;
+  height: 2.5rem;
+}
+
+.background {
+  width: 70%;
+  padding: 40px;
+  height: 100vh;
+/*   background: linear-gradient(60deg, rgba(158, 189, 19, 0.5), rgba(0, 133, 82, 0.7)),
+  url("http://source.unsplash.com/lbLgFFlADrY") center no-repeat; */
+  background: linear-gradient(60deg, rgba(158, 189, 19, 0.5), rgba(0, 133, 82, 0.7)),
+    url("https://cdn.pixabay.com/photo/2016/03/09/09/22/workplace-1245776_960_720.jpg") center no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: flex-end;
+  align-content: center;
+  flex-direction: row;
+
+  @media only screen and (max-width: 600px) {
+    width: 100%;
+  }
+}
+.background h1 {
+  max-width: 420px;
+  color: #fff;
+  text-align: right;
+  padding: 0;
+  margin: 0;
+}
+.background p {
+  max-width: 650px;
+  color: #ddd;
+  font-size: 15px;
+  text-align: right;
+  padding: 0;
+  margin: 15px 0 0 0;
+}
+.madeby {
+  position: absolute;
+  bottom: 30px;
+  right: 40px;
+}
+.madeby p {
+  font-weight: bold;
+  color: #9ebd13;
+}
+.madeby a {
+  color: #222;
+  text-decoration: none;
+}
+.form-login {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 3em;
+}
