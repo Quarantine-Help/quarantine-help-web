@@ -13,8 +13,8 @@ export class CockpitComponent implements OnInit {
   ngOnInit() {
   }
 
-  navigateHome(): void {
-    this._router.navigate(['cockpit']);
+  navigateTo(route: string): void {
+    this._router.navigate([route]);
   }
 
 }

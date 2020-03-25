@@ -1,25 +1,50 @@
-<div id="login-page">
+<div class="login">
+    <div class="login-head">
+        <div class="login-head_left" (click)="navigateTo('cockpit')">
+            <div class="login-head_left__square"></div>
+            <span class="login-head_left__brand">Quarantined <br>Helper</span>
+        </div>
+        <div class="login-head_right" (click)="navigateTo('register')">
+            <span class="login-head_right__login">register</span>
+        </div>
+    </div>
+
+    <div class="login-main">
+        <mat-card>
+            <mat-form-field appearance="outline">
+                <mat-label>Email address</mat-label>
+                <input matInput placeholder="Enter email">
+                <mat-icon matSuffix>email</mat-icon>
+                <!-- <mat-hint>Hint</mat-hint> -->
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Password</mat-label>
+                <input matInput placeholder="Enter password">
+                <mat-icon matSuffix>lock</mat-icon>
+                <!-- <mat-hint>Hint</mat-hint> -->
+            </mat-form-field>
+        </mat-card>
+    </div>
+</div>
+<!-- <div id="login-page">
     <div class="login" *ngIf="AUTH_MODE === 0">
         <h2 class="login-title">Login</h2>
         <div class="form-login">
-            <!-- <label for="email">E-mail</label> -->
             <div class="input-email">
                 <mat-icon>email</mat-icon>
                 <input type="email" name="email" placeholder="Enter your email">
             </div>
-            <!-- <label for="password">Password</label> -->
             <div class="input-password">
                 <mat-icon>lock</mat-icon>
                 <input type="password" name="password" placeholder="Enter your password">
             </div>
             <button mat-button class="login-button">Login</button>
         </div>
-        <a (click)="setAuthMode('register')" class="pointer">Not a member? Register here</a>
+        <a (click)="setAuthMode('login')" class="pointer">Not a member? login here</a>
     </div>
     <div class="login" *ngIf="AUTH_MODE === 1">
-        <h2 class="login-title">REGISTER</h2>
+        <h2 class="login-title">login</h2>
         <div class="form-login">
-            <!-- <label for="email">E-mail</label> -->
             <div class="input-email">
                 <mat-icon>email</mat-icon>
                 <input type="email" name="email" placeholder="Enter your email">
@@ -33,14 +58,13 @@
                 <input type="email" name="email" placeholder="Enter your email">
             </div>
             
-            <!-- <label for="password">Password</label> -->
             <div class="input-password">
                 <mat-icon>lock</mat-icon>
                 <input type="password" name="password" placeholder="Enter your password">
             </div>
             <button mat-button class="login-button">Login</button>
         </div>
-        <a (click)="setAuthMode('login')" class="pointer">Not a member? Register here</a>
+        <a (click)="setAuthMode('login')" class="pointer">Not a member? login here</a>
     </div>
     <div class="background">
         <h1>Qurantined Help Portal</h1>
@@ -52,4 +76,4 @@
             id vulputate odio imperdiet in.
         </p>
     </div>
-</div>
+</div> -->
