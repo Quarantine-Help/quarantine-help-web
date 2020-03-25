@@ -36,12 +36,16 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatTableModule} from '@angular/material/table';
 import {MatSortModule} from '@angular/material/sort';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import { RegisterComponent } from './components/register/register.component';
+import { CockpitComponent } from './components/cockpit/cockpit.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    RegisterComponent,
+    CockpitComponent
   ],
   imports: [
     BrowserModule,

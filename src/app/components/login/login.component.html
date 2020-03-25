@@ -1,5 +1,5 @@
 <div id="login-page">
-    <div class="login">
+    <div class="login" *ngIf="AUTH_MODE === 0">
         <h2 class="login-title">Login</h2>
         <div class="form-login">
             <!-- <label for="email">E-mail</label> -->
@@ -14,7 +14,33 @@
             </div>
             <button mat-button class="login-button">Login</button>
         </div>
-        <a href="#">Not a member? Register here</a>
+        <a (click)="setAuthMode('register')" class="pointer">Not a member? Register here</a>
+    </div>
+    <div class="login" *ngIf="AUTH_MODE === 1">
+        <h2 class="login-title">REGISTER</h2>
+        <div class="form-login">
+            <!-- <label for="email">E-mail</label> -->
+            <div class="input-email">
+                <mat-icon>email</mat-icon>
+                <input type="email" name="email" placeholder="Enter your email">
+            </div>
+            <div class="input-email">
+                <mat-icon>email</mat-icon>
+                <input type="email" name="email" placeholder="Enter your email">
+            </div>
+            <div class="input-email">
+                <mat-icon>email</mat-icon>
+                <input type="email" name="email" placeholder="Enter your email">
+            </div>
+            
+            <!-- <label for="password">Password</label> -->
+            <div class="input-password">
+                <mat-icon>lock</mat-icon>
+                <input type="password" name="password" placeholder="Enter your password">
+            </div>
+            <button mat-button class="login-button">Login</button>
+        </div>
+        <a (click)="setAuthMode('login')" class="pointer">Not a member? Register here</a>
     </div>
     <div class="background">
         <h1>Qurantined Help Portal</h1>

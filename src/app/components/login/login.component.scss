@@ -103,8 +103,6 @@ input[type="password"] {
   width: 70%;
   padding: 40px;
   height: 100vh;
-/*   background: linear-gradient(60deg, rgba(158, 189, 19, 0.5), rgba(0, 133, 82, 0.7)),
-  url("http://source.unsplash.com/lbLgFFlADrY") center no-repeat; */
   background: linear-gradient(60deg, rgba(158, 189, 19, 0.5), rgba(0, 133, 82, 0.7)),
     url("https://cdn.pixabay.com/photo/2016/03/09/09/22/workplace-1245776_960_720.jpg") center no-repeat;
   background-size: cover;
@@ -152,4 +150,8 @@ input[type="password"] {
   flex-direction: column;
   width: 100%;
   padding: 3em;
+}
+
+.pointer {
+  cursor: pointer;
 }
