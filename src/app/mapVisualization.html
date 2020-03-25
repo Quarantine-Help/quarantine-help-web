@@ -62,6 +62,45 @@
         else {
             console.error("Geolocation is not supported by this browser!");
         }
+
+        //  API to extract helper / seeker address
+
+        function showParticipants() {
+
+            let url = `https://YOUR_API_URL`;
+            fetch(url,{
+                "method":"GET"
+            })
+            .then(response => response.json())
+            .then(response => {
+
+                let participant = response.results.participants;
+
+                for(let i = 0; i < participant.length; i ++ ){
+
+                    let helperPosition = {lat:participant[i].position.longitude, lng:participant[i].position.latitude};
+                    let helperInfo = 'name = '+ participant[i].user.firstName + ' ' + participant[i].user.lastName +
+                                    'place ID : ' + participant[i].placeId  // will add ability later
+
+                    helperMarker = new H.map.Marker(helperPosition);
+                    map.addObject(helperMarker);
+                    // add different colored marker for helper and seeker
+                    // add marker data
+                    // add info bubble on click 
+                }
+            }, error => {
+                    console.error(error);
+                });
+
+            
+
+
+
+        }
+
+        
+        
+
     </script>
 </html>
 
