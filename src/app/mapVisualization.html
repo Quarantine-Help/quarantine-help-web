@@ -89,7 +89,7 @@
                 for(let i = 0; i < participant.length; i ++ ){
                     console.log(participant);
 
-                    let helperPosition = {lat:participant[i].position.longitude, lng:participant[i].position.latitude};
+                    let helperPosition = {lat:participant[i].position.latitude, lng:participant[i].position.longitude};
                     let helperInfo = 'name = '+ participant[i].user.firstName + ' ' + participant[i].user.lastName +
                                     'place ID : ' + participant[i].placeId ;  // will add ability later
 
