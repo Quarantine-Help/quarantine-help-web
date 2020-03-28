@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { IAuthMode } from 'src/app/models/auth';
+import { IAuthMode, ILoginForm } from 'src/app/models/auth';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -8,14 +9,21 @@ import { IAuthMode } from 'src/app/models/auth';
 })
 export class LoginComponent implements OnInit {
 
-  AUTH_MODE: IAuthMode = IAuthMode.LOGIN;
+  loginForm = new FormGroup({
+    email: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', Validators.required),
+  });
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  setAuthMode(mode: string): void {
-    this.AUTH_MODE = mode === 'register' ? IAuthMode.REGISTER : IAuthMode.LOGIN;
+  login(): void {
+    console.log(this.loginForm.value);
   }
+
+  get email() { return this.loginForm.get('email'); }
+
+  get password() { return this.loginForm.get('password'); }
 }

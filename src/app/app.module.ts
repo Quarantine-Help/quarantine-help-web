@@ -38,6 +38,7 @@ import {MatSortModule} from '@angular/material/sort';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { RegisterComponent } from './components/register/register.component';
 import { CockpitComponent } from './components/cockpit/cockpit.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,8 @@ import { CockpitComponent } from './components/cockpit/cockpit.component';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatCheckboxModule,
