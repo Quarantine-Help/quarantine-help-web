@@ -1,0 +1,50 @@
+<div class="register">
+    <div class="register-head">
+        <div class="register-head_left" (click)="navigateTo('cockpit')">
+            <div class="register-head_left__square"></div>
+            <span class="register-head_left__brand">Quarantined <br>Helper</span>
+        </div>
+        <div class="register-head_right" [routerLink]="'/login'">
+            <span class="register-head_right__register">login</span>
+        </div>
+    </div>
+
+    <div class="register-main">
+        <mat-horizontal-stepper linear #stepper class="stepper">
+            <mat-step [stepControl]="basicInfoForm" errorMessage="Name is required.">
+                <form [formGroup]="basicInfoForm">
+                    <ng-template matStepLabel>Basic Information</ng-template>
+                    <mat-form-field>
+                        <mat-label>Name</mat-label>
+                        <input matInput placeholder="Last name, First name" formControlName="firstName" required>
+                    </mat-form-field>
+                    <div>
+                        <button mat-button matStepperNext>Next</button>
+                    </div>
+                </form>
+            </mat-step>
+            <mat-step [stepControl]="additionalForm" errorMessage="Address is required.">
+                <form [formGroup]="additionalForm">
+                    <ng-template matStepLabel>Additional Details</ng-template>
+                    <mat-form-field>
+                        <mat-label>Address</mat-label>
+                        <input matInput placeholder="Ex. 1 Main St, New York, NY" formControlName="type" required>
+                    </mat-form-field>
+                    <div>
+                        <button mat-button matStepperPrevious>Back</button>
+                        <button mat-button matStepperNext>Next</button>
+                    </div>
+                </form>
+            </mat-step>
+            <mat-step>
+                <ng-template matStepLabel>Done</ng-template>
+                <p>You are now done.</p>
+                <div>
+                    <button mat-button matStepperPrevious>Back</button>
+                    <button mat-button (click)="stepper.reset()">Reset</button>
+                </div>
+            </mat-step>
+        </mat-horizontal-stepper>
+
+    </div>
+</div>
