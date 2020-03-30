@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-cockpit',
@@ -8,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class CockpitComponent implements OnInit {
 
-  constructor(private _router: Router) { }
+  constructor(public translate: TranslateService, private _router: Router) { }
 
   ngOnInit() {
   }

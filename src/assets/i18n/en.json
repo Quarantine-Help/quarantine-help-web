@@ -4,6 +4,10 @@
     },
     "auth": {
         "login": "Login",
-        "register": "Register"
+        "logout": "logout",
+        "register": "Register",
+        "new-user-message": "New user? Please choose a category",
+        "quarantined-user": "I am quarantined.",
+        "volunteer": "I am a volunteer"
     }
 }

@@ -28,19 +28,48 @@
   &_right {
     width: 200px;
     height: 50px;
-    border: 2px solid black;
+    //border: 2px solid black;
     /* padding: 20px; */
     display: flex;
     align-items: center;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
     margin-right: 15px;
-    cursor: pointer;
+    border: none;
 
     &__register {
       font-family: "Poppins", sans-serif;
       text-transform: uppercase;
       font-weight: 600;
+      border: 2px solid black;
+      padding: 8px 25px;
+      cursor: pointer !important;
+      -webkit-transition: none;
+      transition: none;
+      border-radius: 0;
     }
   }
+}
+
+.language {
+  width: 2.5em;
+  height: 2.5em;
+  margin-right: 1em;
+  background-position: center;
+  background-size: cover;
+  cursor: pointer;
+
+  &-sec {
+    width: 25px;
+    height: 25px;
+  }
+}
+
+.langmenu {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  text-transform: uppercase;
+  font-weight: 400;
 }
