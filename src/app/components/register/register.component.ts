@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
-import {TranslateService} from '@ngx-translate/core';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-register',
@@ -25,14 +25,14 @@ export class RegisterComponent implements OnInit {
 
   basicInfoForm = new FormGroup({
     firstName: new FormControl('', [Validators.required]),
-   /*  lastName: new FormControl('', [Validators.required]),
+    lastName: new FormControl('', [Validators.required]),
     email: new FormControl('', [Validators.required, Validators.email]),
     firstAddress: new FormControl('', [Validators.required]),
-    secondAddress: new FormControl('', [Validators.required]),
+    secondAddress: new FormControl(''),
     city: new FormControl('', [Validators.required]),
     phone: new FormControl('', [Validators.required]),
     country: new FormControl('', [Validators.required]),
-    postcode: new FormControl('', [Validators.required]), */
+    postcode: new FormControl('', [Validators.required]),
   })
 
   constructor(private _router: Router, private _translate: TranslateService) { }

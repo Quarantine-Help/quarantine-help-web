@@ -9,5 +9,22 @@
         "new-user-message": "New user? Please choose a category",
         "quarantined-user": "I am quarantined.",
         "volunteer": "I am a volunteer"
+    },
+    "form": {
+        "firstname": "First name",
+        "lastname": "Last name",
+        "email": "Email",
+        "address1": "First address",
+        "address2": "Second address",
+        "city": "City",
+        "phone": "Phone",
+        "country": "Country",
+        "postcode": "Post code",
+        "info1": "Personal Information",
+        "info2": "Additional Details",
+        "done": "Done",
+        "error": {
+            "generic": "Please fill the required fields"
+        }
     }
 }
