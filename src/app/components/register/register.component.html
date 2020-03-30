@@ -1,13 +1,13 @@
 <div class="register">
-    <div class="register-head">
+ <!--    <div class="register-head">
         <div class="register-head_left" (click)="navigateTo('cockpit')">
             <div class="register-head_left__square"></div>
             <span class="register-head_left__brand">Quarantined <br>Helper</span>
         </div>
         <div class="register-head_right" [routerLink]="'/login'">
-            <span class="register-head_right__register">login</span>
+            <span class="register-head_right__register"> {{ 'auth.login' | translate }} </span>
         </div>
-    </div>
+    </div> -->
 
     <div class="register-main">
         <mat-horizontal-stepper linear #stepper class="stepper">

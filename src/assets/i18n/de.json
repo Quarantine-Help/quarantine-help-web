@@ -1,0 +1,9 @@
+{
+    "general": {
+        "hello": "Hallo"
+    },
+    "auth": {
+        "login": "Einloggen",
+        "register": "Registrieren"
+    }
+}

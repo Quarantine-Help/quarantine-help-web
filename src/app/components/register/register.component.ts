@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-register',
@@ -34,7 +35,7 @@ export class RegisterComponent implements OnInit {
     postcode: new FormControl('', [Validators.required]), */
   })
 
-  constructor(private _router: Router) { }
+  constructor(private _router: Router, private _translate: TranslateService) { }
 
   ngOnInit() {
   }

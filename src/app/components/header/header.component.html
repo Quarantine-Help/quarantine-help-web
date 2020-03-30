@@ -1,0 +1,9 @@
+<div class="header">
+    <div class="header_left" (click)="navigateTo('cockpit')">
+        <div class="header_left__square"></div>
+        <span class="header_left__brand">Quarantined <br>Helper</span>
+    </div>
+    <div class="header_right" [routerLink]="'/login'">
+        <span class="header_right__register"> {{ 'auth.login' | translate }} </span>
+    </div>
+</div>
