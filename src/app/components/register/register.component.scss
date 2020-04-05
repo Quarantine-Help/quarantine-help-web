@@ -105,3 +105,66 @@
     }
   }
 }
+
+.pform {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  margin-top: 30px;
+
+  mat-form-field {
+    width: 45%;
+
+    @media only screen and (max-width: 600px) {
+      width: 100%;
+    }
+  }
+
+  .actions {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 45%;
+
+    @media only screen and (max-width: 600px) {
+      width: 100%;
+      flex-direction: column;
+      padding-top: 25px;
+    }
+
+    button {
+      width: 45%;
+      background: black;
+      color: white;
+      text-transform: uppercase;
+      border-radius: 0;
+      padding: 5px;
+
+      @media only screen and (max-width: 600px) {
+        width: 100%;
+        margin: 5px;
+      }
+    }
+  }
+}
+.done {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  padding-top: 10%;
+
+  p {
+    font-family: "Poppins", sans-serif;
+    color: green;
+  }
+
+  button {
+    border-radius: 0;
+    background: black;
+    color: white;
+    padding: 8px 25px;
+  }
+}

@@ -17,7 +17,8 @@ export class RegisterComponent implements OnInit {
 
   additionalForm = new FormGroup({
     //position: new FormControl('', [Validators.required]),
-    type: new FormControl('', [Validators.required]),
+    password: new FormControl('', [Validators.required, Validators.minLength(6)]),
+    passwordconfirm: new FormControl('', [Validators.required, Validators.minLength(6)]),
     /* googlePlaceId: new FormControl('', [Validators.required]),
     is_available: new FormControl('', [Validators.required]),
     crisis: new FormControl('', [Validators.required]),
@@ -34,6 +35,7 @@ export class RegisterComponent implements OnInit {
     phone: new FormControl('', [Validators.required]),
     country: new FormControl('', [Validators.required]),
     postcode: new FormControl('', [Validators.required]),
+    secondAddress: new FormControl(''),
   })
 
   constructor(private _router: Router, private _translate: TranslateService) { }
@@ -71,4 +73,14 @@ export class RegisterComponent implements OnInit {
 
   }
 
+  get password() { return this.additionalForm.get('password'); }
+  get passwordconfirm() { return this.additionalForm.get('passwordconfirm'); }
+
+  compare(): void {
+    if (this.password.value !== this.passwordconfirm.value) {
+      this.passwordconfirm.setErrors({
+        notmatched: true
+      });
+    }
+  }
 }
