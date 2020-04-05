@@ -3,12 +3,22 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { AuthGuard } from './auth/auth.guard';
+import { RegisterComponent } from './components/register/register.component';
+import { CockpitComponent } from './components/cockpit/cockpit.component';
 
 
 const routes: Routes = [
   {
+    path: 'cockpit',
+    component: CockpitComponent,
+  },
+  {
     path: 'login',
     component: LoginComponent,
+  },
+  {
+    path: 'register',
+    component: RegisterComponent,
   },
   {
     path: 'home',
@@ -17,7 +27,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: '/login',
+    redirectTo: '/cockpit',
     pathMatch: 'full'
   },
   { path: '**', component: LoginComponent }
