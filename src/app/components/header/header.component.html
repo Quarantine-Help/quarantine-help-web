@@ -1,0 +1,23 @@
+<div class="header">
+    <div class="header_left" (click)="navigateTo('cockpit')">
+        <div class="header_left__square"></div>
+        <span class="header_left__brand">Quarantined <br>Helper</span>
+    </div>
+    <div class="header_right">
+        <div class="language" [matMenuTriggerFor]="menu" [style.backgroundImage]="languageIcon[translate.currentLang]">
+            <!-- {{translate.currentLang}} -->
+        </div>
+        <mat-menu #menu="matMenu" xPosition="before">
+            <button class="langmenu" mat-menu-item *ngFor="let lang of translate.getLangs()"
+                (click)="translate.use(lang)">
+                <div class="language language-sec" [style.backgroundImage]="languageIcon[lang]"></div>
+                {{ lang }}
+            </button>
+        </mat-menu>
+        <!-- <span class="header_right__register" [routerLink]="'/login'"> {{ 'auth.login' | translate }} </span> -->
+        <button *ngIf="!currentUser" mat-stroked-button class="header_right__register"
+            [routerLink]="buttonInfo.url">{{ buttonInfo?.title }}</button>
+        <button *ngIf="currentUser" mat-stroked-button
+            class="header_right__register">{{ 'auth.logout' | translate }}</button>
+    </div>
+</div>

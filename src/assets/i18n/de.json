@@ -1,0 +1,46 @@
+{
+    "general": {
+        "hello": "Hallo",
+        "next": "Nächste",
+        "back": "Zurück"
+    },
+    "auth": {
+        "login": "Einloggen",
+        "logout": "Ausloggen",
+        "register": "Registrieren",
+        "new-user-message": "Neuer Benutzer? Bitte wählen Sie eine Kategorie",
+        "quarantined-user": "Ich stehe unter Quarantäne.",
+        "volunteer": "Ich bin ein Freiwilliger",
+        "success-registration": "Sie wurden erfolgreich registriert",
+        "login-to-continue": "Bitte einloggen zum Fortfahren"
+    },
+    "form": {
+        "firstname": "Vorname",
+        "lastname": "Nachname",
+        "email": "Email",
+        "address1": "Erste Adresse",
+        "address2": "Zweite Adresse",
+        "city": "Stadt",
+        "phone": "Telefon",
+        "country": "Land",
+        "postcode": "Postleitzahl",
+        "info1": "Persönliche Daten",
+        "info2": "Weitere Information",
+        "done": "Fertig",
+        "street": "Straße",
+        "housenumber": "Hausnummer",
+        "auto-complete-address": "Suche deine Adresse",
+        "set-password": "Passwort festlegen",
+        "password": "Passwort",
+        "confirm-password": "Bestätige das Passwort",
+        "error": {
+            "generic": "Bitte füllen Sie die erforderlichen Felder aus",
+            "required": {
+                "email": "Bitte geben Sie die E-Mail ein",
+                "password": "Bitte geben Sie das Passwort ein"
+            },
+            "notmatched": "Der eingegebene Text stimmte nicht mit dem Passwort überein",
+            "minlength": "Das Passwort muss mindestens 6 Zeichen enthalten"
+        }
+    }
+}
