@@ -1,4 +1,8 @@
 .auto {
   width: 265px;
   margin: 15px;
+
+  @media only screen and (max-width: 600px) {
+    width: 92%;
+  }
 }
