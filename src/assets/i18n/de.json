@@ -23,6 +23,9 @@
         "info1": "Persönliche Daten",
         "info2": "Weitere Information",
         "done": "Fertig",
+        "street": "Straße",
+        "housenumber": "Hausnummer",
+        "auto-complete-address": "Suche deine Adresse",
         "error": {
             "generic": "Bitte füllen Sie die erforderlichen Felder aus"
         }

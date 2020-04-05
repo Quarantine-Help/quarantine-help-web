@@ -22,6 +22,9 @@
         "postcode": "Post code",
         "info1": "Personal Information",
         "info2": "Additional Details",
+        "street": "Street",
+        "housenumber": "House number",
+        "auto-complete-address": "Search your address",
         "done": "Done",
         "error": {
             "generic": "Please fill the required fields"

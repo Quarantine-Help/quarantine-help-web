@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { TranslateService } from '@ngx-translate/core';
+import { PlaceSuggestion } from '../auto-complete/auto-complete.component';
 
 @Component({
   selector: 'app-register',
@@ -27,8 +28,8 @@ export class RegisterComponent implements OnInit {
     firstName: new FormControl('', [Validators.required]),
     lastName: new FormControl('', [Validators.required]),
     email: new FormControl('', [Validators.required, Validators.email]),
-    firstAddress: new FormControl('', [Validators.required]),
-    secondAddress: new FormControl(''),
+    street: new FormControl('', [Validators.required]),
+    housenumber: new FormControl('', [Validators.required]),
     city: new FormControl('', [Validators.required]),
     phone: new FormControl('', [Validators.required]),
     country: new FormControl('', [Validators.required]),
@@ -43,4 +44,31 @@ export class RegisterComponent implements OnInit {
   navigateHome(): void {
     this._router.navigate(['register']);
   }
+
+  autocompleteChanged(value: any) {
+    console.log('LALA', value);
+    if (value && value.data) {
+      const info = value.data.address;
+      if (info.city) {
+        this.basicInfoForm.get('city').setValue(info.city);
+      }
+      if (info.houseNumber) {
+        this.basicInfoForm.get('housenumber').setValue(info.houseNumber);
+      }
+      if (info.street) {
+        this.basicInfoForm.get('street').setValue(info.street);
+      }
+      if (info.city) {
+        this.basicInfoForm.get('city').setValue(info.city);
+      }
+      if (info.postalCode) {
+        this.basicInfoForm.get('postcode').setValue(info.postalCode);
+      }
+      if (info.country) {
+        this.basicInfoForm.get('country').setValue(info.country);
+      }
+    }
+
+  }
+
 }

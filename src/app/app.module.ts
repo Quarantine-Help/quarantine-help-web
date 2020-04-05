@@ -43,7 +43,8 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { TranslateModule, TranslateLoader, TranslateService } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HeaderComponent } from './components/header/header.component';
-import { LOCATION_INITIALIZED } from '@angular/common';
+import { LOCATION_INITIALIZED, CommonModule } from '@angular/common';
+import { AutoCompleteComponent } from './components/auto-complete/auto-complete.component';
 
 export function appInitializerFactory(translate: TranslateService, injector: Injector) {
   return () => new Promise<any>((resolve: any) => {
@@ -73,7 +74,8 @@ export function createTranslateLoader(http: HttpClient) {
     HomeComponent,
     RegisterComponent,
     CockpitComponent,
-    HeaderComponent
+    HeaderComponent,
+    AutoCompleteComponent
   ],
   imports: [
     BrowserModule,
