@@ -31,11 +31,6 @@
           </mat-form-field>
           <app-autocomplete (locationChange)="autocompleteChanged($event)"></app-autocomplete>
           <mat-form-field appearance="fill">
-            <mat-label>{{ 'form.street' | translate }}</mat-label>
-            <mat-icon matSuffix>location_city</mat-icon>
-            <input matInput placeholder="{{ 'form.street' | translate }}" formControlName="street" required />
-          </mat-form-field>
-          <mat-form-field appearance="fill">
             <mat-label>{{ 'form.housenumber' | translate }}</mat-label>
             <mat-icon matSuffix>house</mat-icon>
             <input matInput placeholder="{{ 'form.housenumber' | translate }}" formControlName="housenumber" required />

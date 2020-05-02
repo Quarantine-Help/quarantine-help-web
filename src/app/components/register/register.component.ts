@@ -31,7 +31,6 @@ export class RegisterComponent implements OnInit {
     firstName: new FormControl('', [Validators.required]),
     lastName: new FormControl('', [Validators.required]),
     email: new FormControl('', [Validators.required, Validators.email]),
-    street: new FormControl('', [Validators.required]),
     housenumber: new FormControl('', [Validators.required]),
     city: new FormControl('', [Validators.required]),
     phone: new FormControl('', [Validators.required]),
@@ -54,20 +53,20 @@ export class RegisterComponent implements OnInit {
       if (addressInformation.city) {
         this.basicInfoForm.get('city').setValue(addressInformation.city);
       }
-      if (addressInformation.houseNumber) {
+      if (addressInformation.housenumber) {
         this.basicInfoForm.get('housenumber').setValue(addressInformation.housenumber);
-      }
-      if (addressInformation.street) {
-        this.basicInfoForm.get('street').setValue(addressInformation.street);
       }
       if (addressInformation.city) {
         this.basicInfoForm.get('city').setValue(addressInformation.city);
       }
-      if (addressInformation.postcode) {
-        this.basicInfoForm.get('postcode').setValue(addressInformation.postcode);
+      if (addressInformation.postCode) {
+        this.basicInfoForm.get('postcode').setValue(addressInformation.postCode);
       }
-      if (addressInformation.country) {
-        this.basicInfoForm.get('country').setValue(addressInformation.country);
+      if (addressInformation.countryCode) {
+        this.basicInfoForm.get('country').setValue(addressInformation.countryCode);
+      }
+      if (addressInformation.secondLineOfAddress) {
+        this.basicInfoForm.get('secondAddress').setValue(addressInformation.secondLineOfAddress);
       }
     }
   }

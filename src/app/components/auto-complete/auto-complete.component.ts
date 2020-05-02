@@ -65,12 +65,11 @@ export class AutoCompleteComponent implements OnDestroy {
     const queryParams = new URLSearchParams({
       apiKey: REST_KEY,
       q: text,
-      resultTypes: 'houseNumber',
+      resultTypes: 'houseNumber,street',
       at: `${this.latitudeFromClient},${this.longitudeFromClient}`,
       limit: `${5}`,
-      additionaldata: 'Country2,true',
     });
-    const suggestionsHEREAPI = `https://autosuggest.search.hereapi.com/v1/discover?${queryParams.toString()}`;
+    const suggestionsHEREAPI = `https://autosuggest.search.hereapi.com/v1/autosuggest?${queryParams.toString()}`;
     if (this.requestSub) {
       this.requestSub.unsubscribe();
     }
@@ -93,42 +92,11 @@ export class AutoCompleteComponent implements OnDestroy {
     );
   }
 
-  // tslint:disable-block
   private generateShortAddress(properties: any): string {
-    const shortAddress = properties.title;
-
-    /* if (!shortAddress && properties.street && properties.housenumber) {
-      // name is not set for buildings
-      shortAddress = `${properties.street} ${properties.housenumber}`;
-    }
-
-    shortAddress += (properties.address.postcode && properties.address.city) ?
-    `, ${properties.address.postcode}-${properties.address.city}` : '';
-    shortAddress += (!properties.address.postcode && properties.address.city
-    && properties.address.city !== properties.address.name) ? `, ${properties.address.city}` : '';
-    shortAddress += (properties.address.country && properties.address.country
-     !== properties.address.name) ? `, ${properties.address.country}` : '';
- */
-    return shortAddress;
+    return properties.title;
   }
-
-  // tslint:disable-block
   private generateFullAddress(properties: any): string {
-    const fullAddress = properties.title;
-    // tslint:disable-block
-    /*   fullAddress += properties.address.street ? `,
-    ${properties.address.street}` : '';
-    fullAddress += properties.address.housenumber ? `
-    ${properties.address.housenumber}` : '';
-    fullAddress += (properties.address.postcode && properties.address.city) ?
-    `, ${properties.address.postcode}-${properties.address.city}` : '';
-    fullAddress += (!properties.address.postcode && properties.address.city
-    && properties.address.city !== properties.address.name) ? `, ${properties.address.city}` : '';
-    fullAddress += properties.address.state ? `, ${properties.address.state}` : '';
-    fullAddress += (properties.address.country &&
-     properties.address.country !== properties.address.name) ? `, ${properties.country}` : '';
-   */
-    return fullAddress;
+    return properties.title;
   }
 
   public optionSelectionChange(option: PlaceSuggestion, event: MatOptionSelectionChange) {
@@ -194,7 +162,6 @@ interface AddressInformation {
   secondLineOfAddress: string;
   postCode: string;
   city: string;
-  street: string;
   housenumber: string;
   latitude: string;
   longitude: string;
