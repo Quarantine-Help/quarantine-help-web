@@ -61,9 +61,10 @@ export class AutoCompleteComponent implements OnDestroy {
   }
 
   private generateSuggestions(text: string) {
-    const REST_KEY = 'INxGhspY9TqShx3heSZSBmobOsutPeE9eJaTxfHiiQQ';
+    // @FIXME Move me to env later
+    const HERE_MAPS_KEY = 'INxGhspY9TqShx3heSZSBmobOsutPeE9eJaTxfHiiQQ';
     const queryParams = new URLSearchParams({
-      apiKey: REST_KEY,
+      apiKey: HERE_MAPS_KEY,
       q: text,
       resultTypes: 'houseNumber,street',
       at: `${this.latitudeFromClient},${this.longitudeFromClient}`,
