@@ -1,47 +1,46 @@
 {
-    "general": {
-        "hello": "Hello",
-        "next": "Next",
-        "back": "Back"
-    },
-    "auth": {
-        "login": "Login",
-        "logout": "logout",
-        "register": "Register",
-        "new-user-message": "New user? Please choose a category",
-        "quarantined-user": "I am quarantined.",
-        "volunteer": "I am a volunteer",
-        "success-registration": "You have been registered successfully",
-        "login-to-continue": "Please login to continue"
-
-    },
-    "form": {
-        "firstname": "First name",
-        "lastname": "Last name",
-        "email": "Email",
-        "address1": "First address",
-        "address2": "Second address",
-        "city": "City",
-        "phone": "Phone",
-        "country": "Country",
-        "postcode": "Post code",
-        "info1": "Personal Information",
-        "info2": "Additional Details",
-        "street": "Street",
-        "housenumber": "House number",
-        "auto-complete-address": "Search your address",
-        "done": "Done",
-        "password": "Password",
-        "set-password": "Set Password",
-        "confirm-password": "Confirm password",
-        "error": {
-            "generic": "Please fill the required fields",
-            "required": {
-                "email": "Please enter the email",
-                "password": "Please enter the password"
-            },
-            "minlength": "The password must contain at least 6 characters",
-            "notmatched": "Entered text did not match the password"
-        }
+  "general": {
+    "hello": "Hello",
+    "next": "Next",
+    "back": "Back"
+  },
+  "auth": {
+    "login": "Login",
+    "logout": "logout",
+    "register": "Register",
+    "new-user-message": "New user? Please choose a category",
+    "quarantined-user": "I am quarantined.",
+    "volunteer": "I am a volunteer",
+    "success-registration": "You have been registered successfully",
+    "login-to-continue": "Please login to continue"
+  },
+  "form": {
+    "firstname": "First name",
+    "lastname": "Last name",
+    "email": "Email",
+    "address1": "First address",
+    "address2": "Second address",
+    "city": "City",
+    "phone": "Phone",
+    "country": "Country",
+    "postcode": "Post code",
+    "info1": "Personal Information",
+    "info2": "Additional Details",
+    "street": "Street",
+    "housenumber": "House number",
+    "auto-complete-address": "Search your address",
+    "done": "Done",
+    "password": "Password",
+    "set-password": "Set Password",
+    "confirm-password": "Confirm password",
+    "error": {
+      "generic": "Please fill the required fields",
+      "required": {
+        "email": "Please enter the email",
+        "password": "Please enter the password"
+      },
+      "minlength": "The password must contain at least 6 characters",
+      "notmatched": "Entered text did not match the password"
     }
+  }
 }

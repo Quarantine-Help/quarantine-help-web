@@ -1,5 +1,5 @@
 <div class="login">
-    <!-- <div class="login-head">
+  <!-- <div class="login-head">
         <div class="login-head_left" (click)="navigateTo('cockpit')">
             <div class="login-head_left__square"></div>
             <span class="login-head_left__brand">Quarantined <br>Helper</span>
@@ -9,38 +9,56 @@
         </div>
     </div> -->
 
-    <div class="login-main">
-        <mat-card>
-            <form class="login-form" [formGroup]="loginForm" (ngSubmit)="login()">
-                <mat-form-field appearance="outline">
-                    <mat-label>Email address</mat-label>
-                    <input matInput placeholder="Enter email" id="email" formControlName="email">
-                    <mat-icon matSuffix>email</mat-icon>
-                    <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
-                        <div *ngIf="email.errors.required" class="error">
-                            Email address is required.
-                        </div>
-                        <div *ngIf="email.errors.email" class="error">
-                            Please enter a valid email.
-                        </div>
-                    </div>
-                    <!-- <mat-hint>Hint</mat-hint> -->
-                </mat-form-field>
-                <mat-form-field appearance="outline">
-                    <mat-label>Password</mat-label>
-                    <input matInput placeholder="Enter password" id="password" formControlName="password">
-                    <mat-icon matSuffix>lock</mat-icon>
-                    <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
-                        <div *ngIf="password.errors.required" class="error">
-                            Please enter the password.
-                        </div>
-                    </div>
-                    <!-- <mat-hint>Hint</mat-hint> -->
-                </mat-form-field>
-                <button mat-flat-button class="submit" [disabled]="!loginForm.valid">Login</button>
-            </form>
-        </mat-card>
-    </div>
+  <div class="login-main">
+    <mat-card>
+      <form class="login-form" [formGroup]="loginForm" (ngSubmit)="login()">
+        <mat-form-field appearance="outline">
+          <mat-label>Email address</mat-label>
+          <input
+            matInput
+            placeholder="Enter email"
+            id="email"
+            formControlName="email"
+          />
+          <mat-icon matSuffix>email</mat-icon>
+          <div
+            *ngIf="email.invalid && (email.dirty || email.touched)"
+            class="alert alert-danger"
+          >
+            <div *ngIf="email.errors.required" class="error">
+              Email address is required.
+            </div>
+            <div *ngIf="email.errors.email" class="error">
+              Please enter a valid email.
+            </div>
+          </div>
+          <!-- <mat-hint>Hint</mat-hint> -->
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Password</mat-label>
+          <input
+            matInput
+            placeholder="Enter password"
+            id="password"
+            formControlName="password"
+          />
+          <mat-icon matSuffix>lock</mat-icon>
+          <div
+            *ngIf="password.invalid && (password.dirty || password.touched)"
+            class="alert alert-danger"
+          >
+            <div *ngIf="password.errors.required" class="error">
+              Please enter the password.
+            </div>
+          </div>
+          <!-- <mat-hint>Hint</mat-hint> -->
+        </mat-form-field>
+        <button mat-flat-button class="submit" [disabled]="!loginForm.valid">
+          Login
+        </button>
+      </form>
+    </mat-card>
+  </div>
 </div>
 <!-- <div id="login-page">
     <div class="login" *ngIf="AUTH_MODE === 0">

@@ -1,4 +1,5 @@
 # Quarantine Help
+
 [![Maintainability](https://api.codeclimate.com/v1/badges/0d896f70cb78338b69d9/maintainability)](https://codeclimate.com/github/Quarantine-Help/angular-web-app/maintainability)
 [![Netlify Status](https://img.shields.io/netlify/9ae65f93-177f-4cc1-9428-bbe8f2360f8e?label=netlify%20live)](https://app.netlify.com/sites/quarantinehelp/deploys)
 [![Netlify Status](https://img.shields.io/netlify/8524b3e9-d172-43be-931a-f81fa86f2ff8?label=netlify%20dev)](https://app.netlify.com/sites/qhdev/deploys)
@@ -27,7 +28,8 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
 ### Contributing
-Go through the Github issues and find/add something you can work on. Ask questions and let us know before you take up something. Make PRs to the develop branch. 
+
+Go through the Github issues and find/add something you can work on. Ask questions and let us know before you take up something. Make PRs to the develop branch.
 
 Do join us on [![Slack](https://cdn.brandfolder.io/5H442O3W/as/pl546j-7le8zk-ex8w65/Slack_RGB.auto?width=78&height=20)][slack-invite] for the discussions.
 

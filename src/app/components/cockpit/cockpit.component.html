@@ -1,5 +1,5 @@
 <div class="register">
-    <!-- <div class="register-head">
+  <!-- <div class="register-head">
         <div class="register-head_left" (click)="navigateTo('cockpit')">
             <div class="register-head_left__square"></div>
             <span class="register-head_left__brand">Quarantined <br>Helper</span>
@@ -8,17 +8,19 @@
             <span class="register-head_right__login">Login</span>
         </div>
     </div> -->
-    <div class="register-middle">
-        {{ 'auth.new-user-message' | translate }}
+  <div class="register-middle">{{ "auth.new-user-message" | translate }}</div>
+  <div class="register-main">
+    <div class="register-main_left" [routerLink]="'/register'">
+      <mat-icon>hotel</mat-icon>
+      <span class="register-main_left__title">{{
+        "auth.quarantined-user" | translate
+      }}</span>
     </div>
-    <div class="register-main">
-        <div class="register-main_left" [routerLink]="'/register'">
-            <mat-icon>hotel</mat-icon>
-            <span class="register-main_left__title">{{ 'auth.quarantined-user' | translate }}</span>
-        </div>
-        <div class="register-main_right" [routerLink]="'/register'">
-            <mat-icon>emoji_people</mat-icon>
-            <span class="register-main_right__title">{{ 'auth.volunteer' | translate }}</span>
-        </div>
+    <div class="register-main_right" [routerLink]="'/register'">
+      <mat-icon>emoji_people</mat-icon>
+      <span class="register-main_right__title">{{
+        "auth.volunteer" | translate
+      }}</span>
     </div>
+  </div>
 </div>

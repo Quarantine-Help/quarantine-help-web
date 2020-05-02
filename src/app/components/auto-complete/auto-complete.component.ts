@@ -1,18 +1,20 @@
-import { Component, Output, EventEmitter, OnDestroy } from '@angular/core';
-import { MatOptionSelectionChange } from '@angular/material';
-import { Subject, Subscription } from 'rxjs';
-import { FormControl } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
-import { TranslateService } from '@ngx-translate/core';
+import { Component, Output, EventEmitter, OnDestroy } from "@angular/core";
+import { MatOptionSelectionChange } from "@angular/material";
+import { Subject, Subscription } from "rxjs";
+import { FormControl } from "@angular/forms";
+import { HttpClient } from "@angular/common/http";
+import { TranslateService } from "@ngx-translate/core";
 
 @Component({
-  selector: 'app-autocomplete',
-  templateUrl: './auto-complete.component.html',
-  styleUrls: ['./auto-complete.component.scss']
+  selector: "app-autocomplete",
+  templateUrl: "./auto-complete.component.html",
+  styleUrls: ["./auto-complete.component.scss"]
 })
 export class AutoCompleteComponent implements OnDestroy {
   @Output()
-  locationChange: EventEmitter<PlaceSuggestion> = new EventEmitter<PlaceSuggestion>();
+  locationChange: EventEmitter<PlaceSuggestion> = new EventEmitter<
+    PlaceSuggestion
+  >();
 
   searchOptions: Subject<PlaceSuggestion[]> = new Subject<PlaceSuggestion[]>();
   inputFieldFormControl: FormControl = new FormControl();
@@ -24,26 +26,28 @@ export class AutoCompleteComponent implements OnDestroy {
   private requestSub: Subscription;
 
   constructor(public translate: TranslateService, private http: HttpClient) {
-    this.valueChangesSub = this.inputFieldFormControl.valueChanges.subscribe((value) => {
-      if (this.userInputTimeout) {
-        window.clearTimeout(this.userInputTimeout);
-      }
+    this.valueChangesSub = this.inputFieldFormControl.valueChanges.subscribe(
+      value => {
+        if (this.userInputTimeout) {
+          window.clearTimeout(this.userInputTimeout);
+        }
 
-      if (this.choosenOption && this.choosenOption.shortAddress === value) {
-        this.searchOptions.next(null);
-        return;
-      }
+        if (this.choosenOption && this.choosenOption.shortAddress === value) {
+          this.searchOptions.next(null);
+          return;
+        }
 
-      if (!value || value.length < 3) {
-        // do not need suggestions until for less than 3 letters
-        this.searchOptions.next(null);
-        return;
-      }
+        if (!value || value.length < 3) {
+          // do not need suggestions until for less than 3 letters
+          this.searchOptions.next(null);
+          return;
+        }
 
-      this.userInputTimeout = window.setTimeout(() => {
-        this.generateSuggestions(value);
-      }, 300);
-    });
+        this.userInputTimeout = window.setTimeout(() => {
+          this.generateSuggestions(value);
+        }, 300);
+      }
+    );
   }
 
   ngOnDestroy() {
@@ -58,26 +62,30 @@ export class AutoCompleteComponent implements OnDestroy {
       this.requestSub.unsubscribe();
     }
 
-    this.http.get(url).subscribe((data: any) => {
-      console.log(data);
+    this.http.get(url).subscribe(
+      (data: any) => {
+        console.log(data);
 
-      const placeSuggestions = data.suggestions.map(feature => {
+        const placeSuggestions = data.suggestions.map(feature => {
+          return {
+            shortAddress: this.generateShortAddress(feature),
+            fullAddress: this.generateFullAddress(feature),
+            data: feature
+          };
+        });
 
-        return {
-          shortAddress: this.generateShortAddress(feature),
-          fullAddress: this.generateFullAddress(feature),
-          data: feature
-        }
-      });
-
-      this.searchOptions.next(placeSuggestions.length ? placeSuggestions : null);
-    }, err => {
-      console.log(err);
-    });
+        this.searchOptions.next(
+          placeSuggestions.length ? placeSuggestions : null
+        );
+      },
+      err => {
+        console.log(err);
+      }
+    );
   }
 
   private generateShortAddress(properties: any): string {
-    console.log('PROPS', properties);
+    console.log("PROPS", properties);
 
     let shortAddress = properties.label;
 
@@ -95,16 +103,19 @@ export class AutoCompleteComponent implements OnDestroy {
 
   private generateFullAddress(properties: any): string {
     let fullAddress = properties.label;
-  /*   fullAddress += properties.address.street ? `, ${properties.address.street}` : '';
+    /*   fullAddress += properties.address.street ? `, ${properties.address.street}` : '';
     fullAddress += properties.address.housenumber ? ` ${properties.address.housenumber}` : '';
     fullAddress += (properties.address.postcode && properties.address.city) ? `, ${properties.address.postcode}-${properties.address.city}` : '';
     fullAddress += (!properties.address.postcode && properties.address.city && properties.address.city !== properties.address.name) ? `, ${properties.address.city}` : '';
     fullAddress += properties.address.state ? `, ${properties.address.state}` : '';
     fullAddress += (properties.address.country && properties.address.country !== properties.address.name) ? `, ${properties.country}` : '';
-   */  return fullAddress;
+   */ return fullAddress;
   }
 
-  public optionSelectionChange(option: PlaceSuggestion, event: MatOptionSelectionChange) {
+  public optionSelectionChange(
+    option: PlaceSuggestion,
+    event: MatOptionSelectionChange
+  ) {
     if (event.isUserInput) {
       this.choosenOption = option;
       this.locationChange.emit(option);
