@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter, OnDestroy } from '@angular/core';
+import { Component, EventEmitter, OnDestroy, Output } from '@angular/core';
 import { MatOptionSelectionChange } from '@angular/material';
 import { Subject, Subscription } from 'rxjs';
 import { FormControl } from '@angular/forms';
@@ -22,8 +22,18 @@ export class AutoCompleteComponent implements OnDestroy {
 
   private userInputTimeout: number;
   private requestSub: Subscription;
+  protected longitudeFromClient = 59.334591;
+  protected latitudeFromClient = 18.06324;
 
   constructor(public translate: TranslateService, private http: HttpClient) {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        this.longitudeFromClient = position.coords.longitude;
+        this.latitudeFromClient = position.coords.latitude;
+      });
+    } else {
+      console.log('No support for geolocation');
+    }
     this.valueChangesSub = this.inputFieldFormControl.valueChanges.subscribe((value) => {
       if (this.userInputTimeout) {
         window.clearTimeout(this.userInputTimeout);
@@ -52,21 +62,26 @@ export class AutoCompleteComponent implements OnDestroy {
 
   private generateSuggestions(text: string) {
     const REST_KEY = 'INxGhspY9TqShx3heSZSBmobOsutPeE9eJaTxfHiiQQ';
-    const url = `https://autocomplete.geocoder.ls.hereapi.com/6.2/suggest.json?query=${text}&limit=5&apiKey=${REST_KEY}`;
-
+    const queryParams = new URLSearchParams({
+      apiKey: REST_KEY,
+      q: text,
+      resultTypes: 'houseNumber',
+      at: `${this.latitudeFromClient},${this.longitudeFromClient}`,
+      limit: `${5}`,
+      additionaldata: 'Country2,true',
+    });
+    const suggestionsHEREAPI = `https://autosuggest.search.hereapi.com/v1/discover?${queryParams.toString()}`;
     if (this.requestSub) {
       this.requestSub.unsubscribe();
     }
-
-    this.http.get(url).subscribe(
+    this.http.get(suggestionsHEREAPI).subscribe(
       (data: any) => {
-        console.log(data);
-
-        const placeSuggestions = data.suggestions.map((feature) => {
+        const placeSuggestions = data.items.map((feature) => {
+          const addressInformation = this.extractAddressFromResult(feature);
           return {
             shortAddress: this.generateShortAddress(feature),
             fullAddress: this.generateFullAddress(feature),
-            data: feature,
+            addressInformation,
           };
         });
 
@@ -80,9 +95,7 @@ export class AutoCompleteComponent implements OnDestroy {
 
   // tslint:disable-block
   private generateShortAddress(properties: any): string {
-    console.log('PROPS', properties);
-
-    const shortAddress = properties.label;
+    const shortAddress = properties.title;
 
     /* if (!shortAddress && properties.street && properties.housenumber) {
       // name is not set for buildings
@@ -101,7 +114,7 @@ export class AutoCompleteComponent implements OnDestroy {
 
   // tslint:disable-block
   private generateFullAddress(properties: any): string {
-    const fullAddress = properties.label;
+    const fullAddress = properties.title;
     // tslint:disable-block
     /*   fullAddress += properties.address.street ? `,
     ${properties.address.street}` : '';
@@ -124,20 +137,67 @@ export class AutoCompleteComponent implements OnDestroy {
       this.locationChange.emit(option);
     }
   }
+
+  private extractAddressFromResult(feature: any) {
+    // The post code specially needs to be unwrapped.
+    const addressExtracted = feature.address;
+    let postCode = addressExtracted.postalCode;
+    let firstLineOfAddress = addressExtracted.street;
+    let houseNumber = null;
+
+    if (postCode) {
+      if (postCode.includes('-')) {
+        postCode = postCode.split('-')[1];
+        if (postCode.includes(' ')) {
+          postCode = postCode.replace(/\s/g, '');
+        }
+        if (/^\d+$/.test(postCode)) {
+          postCode = parseInt(postCode, 10);
+        }
+      }
+    }
+    if (feature.resultType === 'houseNumber') {
+      houseNumber = addressExtracted.houseNumber;
+      firstLineOfAddress = `${firstLineOfAddress} ${houseNumber}`;
+    }
+    return {
+      postCode,
+      position: {
+        latitude: feature.position.lat,
+        longitude: feature.position.lng,
+      },
+      placeId: addressExtracted.id,
+      countryCode: addressExtracted.countryCode,
+      city: addressExtracted.city,
+      housenumber: houseNumber,
+      secondLineOfAddress: addressExtracted.district,
+      firstLineOfAddress,
+    };
+  }
 }
 
 export interface PlaceSuggestion {
   shortAddress: string;
   fullAddress: string;
-  data: GeocodingFeatureProperties;
+  addressInformation: AddressInformation;
 }
 
-interface GeocodingFeatureProperties {
+interface AddressInformation {
   name: string;
   country: string;
   state: string;
-  postcode: string;
+  placeId: string;
+  position: {
+    latitude: number;
+    longitude: number;
+  };
+  secondLineOfAddress: string;
+  postCode: string;
   city: string;
   street: string;
   housenumber: string;
+  latitude: string;
+  longitude: string;
+  countryCode: string;
+  locationId: string;
 }

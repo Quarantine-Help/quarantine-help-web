@@ -49,26 +49,25 @@ export class RegisterComponent implements OnInit {
   }
 
   autocompleteChanged(value: any) {
-    console.log('LALA', value);
-    if (value && value.data) {
-      const info = value.data.address;
-      if (info.city) {
-        this.basicInfoForm.get('city').setValue(info.city);
+    if (value && value.addressInformation) {
+      const addressInformation = value.addressInformation;
+      if (addressInformation.city) {
+        this.basicInfoForm.get('city').setValue(addressInformation.city);
       }
-      if (info.houseNumber) {
-        this.basicInfoForm.get('housenumber').setValue(info.houseNumber);
+      if (addressInformation.houseNumber) {
+        this.basicInfoForm.get('housenumber').setValue(addressInformation.housenumber);
       }
-      if (info.street) {
-        this.basicInfoForm.get('street').setValue(info.street);
+      if (addressInformation.street) {
+        this.basicInfoForm.get('street').setValue(addressInformation.street);
       }
-      if (info.city) {
-        this.basicInfoForm.get('city').setValue(info.city);
+      if (addressInformation.city) {
+        this.basicInfoForm.get('city').setValue(addressInformation.city);
       }
-      if (info.postalCode) {
-        this.basicInfoForm.get('postcode').setValue(info.postalCode);
+      if (addressInformation.postcode) {
+        this.basicInfoForm.get('postcode').setValue(addressInformation.postcode);
       }
-      if (info.country) {
-        this.basicInfoForm.get('country').setValue(info.country);
+      if (addressInformation.country) {
+        this.basicInfoForm.get('country').setValue(addressInformation.country);
       }
     }
   }
