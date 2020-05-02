@@ -1,5 +1,5 @@
 <mat-form-field appearance="fill" class="auto">
-  <mat-label> {{ "form.auto-complete-address" | translate }} </mat-label>
+  <mat-label> {{ 'form.auto-complete-address' | translate }} </mat-label>
   <mat-icon matSuffix>location_searching</mat-icon>
   <input
     matInput
@@ -11,7 +11,7 @@
 
   <mat-autocomplete #auto="matAutocomplete" autoActiveFirstOption>
     <mat-option
-      *ngFor="let option of (searchOptions | async)"
+      *ngFor="let option of searchOptions | async"
       [value]="option.shortAddress"
       (onSelectionChange)="optionSelectionChange(option, $event)"
       [matTooltip]="option.fullAddress"

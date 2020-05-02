@@ -7,9 +7,9 @@
     "build": "ng build",
     "test": "ng test",
     "e2e": "ng e2e",
+    "lint": "ng lint",
     "format:fix": "pretty-quick --staged",
-    "precommit": "run-s format:fix lint",
-    "lint": "ng lint"
+    "precommit": "run-s format:fix lint"
   },
   "private": true,
   "dependencies": {
@@ -54,5 +54,10 @@
     "ts-node": "~7.0.0",
     "tslint": "~5.15.0",
     "typescript": "~3.4.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run precommit"
+    }
   }
 }

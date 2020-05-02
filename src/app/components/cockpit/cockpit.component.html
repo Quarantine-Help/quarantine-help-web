@@ -8,19 +8,15 @@
             <span class="register-head_right__login">Login</span>
         </div>
     </div> -->
-  <div class="register-middle">{{ "auth.new-user-message" | translate }}</div>
+  <div class="register-middle">{{ 'auth.new-user-message' | translate }}</div>
   <div class="register-main">
     <div class="register-main_left" [routerLink]="'/register'">
       <mat-icon>hotel</mat-icon>
-      <span class="register-main_left__title">{{
-        "auth.quarantined-user" | translate
-      }}</span>
+      <span class="register-main_left__title">{{ 'auth.quarantined-user' | translate }}</span>
     </div>
     <div class="register-main_right" [routerLink]="'/register'">
       <mat-icon>emoji_people</mat-icon>
-      <span class="register-main_right__title">{{
-        "auth.volunteer" | translate
-      }}</span>
+      <span class="register-main_right__title">{{ 'auth.volunteer' | translate }}</span>
     </div>
   </div>
 </div>

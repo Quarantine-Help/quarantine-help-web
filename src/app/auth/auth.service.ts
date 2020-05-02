@@ -1,10 +1,10 @@
-import { Injectable } from "@angular/core";
+import { Injectable } from '@angular/core';
 
-import { Observable, of } from "rxjs";
-import { tap, delay } from "rxjs/operators";
+import { Observable, of } from 'rxjs';
+import { tap, delay } from 'rxjs/operators';
 
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root',
 })
 export class AuthService {
   isLoggedIn = false;
@@ -15,7 +15,7 @@ export class AuthService {
   login(): Observable<boolean> {
     return of(true).pipe(
       delay(1000),
-      tap(val => (this.isLoggedIn = true))
+      tap((val) => (this.isLoggedIn = true))
     );
   }
 

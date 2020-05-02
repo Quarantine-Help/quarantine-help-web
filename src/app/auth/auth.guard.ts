@@ -1,25 +1,16 @@
-import { Injectable } from "@angular/core";
-import {
-  CanActivate,
-  ActivatedRouteSnapshot,
-  RouterStateSnapshot,
-  Router
-} from "@angular/router";
+import { Injectable } from '@angular/core';
+import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
 
-import { AuthService } from "./auth.service";
+import { AuthService } from './auth.service';
 
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root',
 })
 export class AuthGuard implements CanActivate {
   constructor(private authService: AuthService, private router: Router) {}
 
-  canActivate(
-    next: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
-  ): boolean {
-    let url: string = state.url;
-
+  canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
+    const url: string = state.url;
     return this.checkLogin(url);
   }
 
@@ -32,7 +23,7 @@ export class AuthGuard implements CanActivate {
     this.authService.redirectUrl = url;
 
     // Navigate to the login page with extras
-    this.router.navigate(["/login"]);
+    this.router.navigate(['/login']);
     return false;
   }
 }

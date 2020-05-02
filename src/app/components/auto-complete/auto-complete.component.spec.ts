@@ -1,14 +1,14 @@
-import { async, ComponentFixture, TestBed } from "@angular/core/testing";
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AutoCompleteComponent } from "./auto-complete.component";
+import { AutoCompleteComponent } from './auto-complete.component';
 
-describe("AutoCompleteComponent", () => {
+describe('AutoCompleteComponent', () => {
   let component: AutoCompleteComponent;
   let fixture: ComponentFixture<AutoCompleteComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [AutoCompleteComponent]
+      declarations: [AutoCompleteComponent],
     }).compileComponents();
   }));
 
@@ -18,7 +18,7 @@ describe("AutoCompleteComponent", () => {
     fixture.detectChanges();
   });
 
-  it("should create", () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 });
