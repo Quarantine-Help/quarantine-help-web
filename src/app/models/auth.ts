@@ -21,7 +21,7 @@ export interface IRegisterForm {
     firstAddress: string;
     secondAddress?: string;
     country: string;
-    googlePlaceId?: string;
+    placeId?: string;
     postcode: number;
     city: string;
     phone: number;

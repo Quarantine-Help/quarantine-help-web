@@ -19,7 +19,7 @@ export class RegisterComponent implements OnInit {
     //position: new FormControl('', [Validators.required]),
     password: new FormControl('', [Validators.required, Validators.minLength(6)]),
     passwordconfirm: new FormControl('', [Validators.required, Validators.minLength(6)]),
-    /* googlePlaceId: new FormControl('', [Validators.required]),
+    /* placeId: new FormControl('', [Validators.required]),
     is_available: new FormControl('', [Validators.required]),
     crisis: new FormControl('', [Validators.required]),
     abilities: new FormControl('', [Validators.required]), */

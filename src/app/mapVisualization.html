@@ -36,11 +36,11 @@
                     zoom: 12, // Initial zoom level of map
                     center: {lat: 59.32698, lng: 18.12622} // Initial center of map
                 });
-        
+
         // creating default UI for map
         var ui = H.ui.UI.createDefault(map, defaultLayers);
-        
-        // Add basic map events like pan and zoom 
+
+        // Add basic map events like pan and zoom
 
         var mapEvents = new H.mapevents.MapEvents(map);
 
@@ -48,7 +48,7 @@
 
         var behavior = new H.mapevents.Behavior(mapEvents);
 
-        // get position from web browser 
+        // get position from web browser
 
         var positionIcon = new H.map.Icon(svgMyPosition);
 
@@ -56,7 +56,7 @@
         var seekerIcon = new H.map.Icon(svgSeekerPosition);
 
         if(navigator.geolocation) {
-            
+
             navigator.geolocation.getCurrentPosition(position => {
 
                 // console.log(position.coords);
@@ -68,7 +68,7 @@
                 map.addObject(posMarker);
                 map.setCenter(markerPosition);
             });
-        } 
+        }
         else {
             console.error("Geolocation is not supported by this browser!");
         }
@@ -91,7 +91,8 @@
 
                     let helperPosition = {lat:participant[i].position.latitude, lng:participant[i].position.longitude};
                     let helperInfo = 'name = '+ participant[i].user.firstName + ' ' + participant[i].user.lastName +
-                                    'place ID : ' + participant[i].placeId ;  // will add ability later
+                                    'place ID : ' + participant[i].
+                            placeId ;  // will add ability later
 
                     let helperMarker = new H.map.Marker(helperPosition,{icon: helperIcon});
 
@@ -101,21 +102,21 @@
                     // map.setCenter(helperPosition);
                     // add different colored marker for helper and seeker
                     // add marker data
-                    // add info bubble on click 
+                    // add info bubble on click
                 }
             }, error => {
                     console.error(error);
                 });
 
-            
+
 
 
 
         }
         showParticipants();
 
-        
-        
+
+
 
     </script>
 </html>
