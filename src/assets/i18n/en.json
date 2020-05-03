@@ -41,7 +41,7 @@
       },
       "minlength": "The password must contain at least 6 characters",
       "notmatched": "Entered text did not match the password",
-      "notHouseAddress": "Please select your complete home address"
+      "notHouseAddress": "Please type your complete home address"
     }
   }
 }

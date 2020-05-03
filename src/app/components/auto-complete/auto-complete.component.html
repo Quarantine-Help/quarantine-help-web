@@ -5,12 +5,15 @@
     matInput
     type="text"
     [matAutocomplete]="auto"
-    [formControl]="inputFieldFormControl"
+    [formControl]="addressSuggestionInput"
+    [errorStateMatcher]="matcher"
     placeholder="Enter location here"
-    id="addressSuggestionInput"
-    formControlName="addressSuggestionInput"
     required
   />
+  <mat-error *ngIf="addressSuggestionInput.hasError('notHouseAddress')">
+    {{ 'form.error.notHouseAddress' | translate }}
+  </mat-error>
+
   <mat-autocomplete #auto="matAutocomplete" autoActiveFirstOption>
     <mat-option
       *ngFor="let option of searchOptions | async"

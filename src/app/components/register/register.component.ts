@@ -49,12 +49,6 @@ export class RegisterComponent implements OnInit {
   }
 
   autocompleteChanged(value: any) {
-    if (value.resultType !== 'houseNumber') {
-      // @TODO Set error later.
-      // this.addressSuggestionInput.setErrors({
-      //     notHouseAddress: true,
-      // })
-    }
     if (value && value.addressInformation) {
       const addressInformation = value.addressInformation;
       if (addressInformation.city) {
@@ -84,10 +78,6 @@ export class RegisterComponent implements OnInit {
   }
   get passwordconfirm() {
     return this.additionalForm.get('passwordconfirm');
-  }
-
-  get addressSuggestionInput() {
-    return this.basicInfoForm.get('addressSuggestionInput');
   }
 
   compare(): void {

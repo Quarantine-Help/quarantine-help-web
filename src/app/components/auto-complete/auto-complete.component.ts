@@ -1,9 +1,18 @@
 import { Component, EventEmitter, OnDestroy, Output } from '@angular/core';
 import { MatOptionSelectionChange } from '@angular/material';
 import { Subject, Subscription } from 'rxjs';
-import { FormControl } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroupDirective, NgForm, ValidatorFn } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { TranslateService } from '@ngx-translate/core';
+import { ErrorStateMatcher } from '@angular/material/core';
+
+/** Error when invalid control is dirty, touched, or submitted. */
+export class MyErrorStateMatcher implements ErrorStateMatcher {
+  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+    const isSubmitted = form && form.submitted;
+    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
+  }
+}
 
 @Component({
   selector: 'app-autocomplete',
@@ -15,7 +24,7 @@ export class AutoCompleteComponent implements OnDestroy {
   locationChange: EventEmitter<PlaceSuggestion> = new EventEmitter<PlaceSuggestion>();
 
   searchOptions: Subject<PlaceSuggestion[]> = new Subject<PlaceSuggestion[]>();
-  inputFieldFormControl: FormControl = new FormControl();
+  addressSuggestionInput: FormControl = new FormControl('', [addressWithoutHoseNumberNotAllowed()]);
 
   private valueChangesSub: Subscription;
   private choosenOption: PlaceSuggestion;
@@ -24,6 +33,7 @@ export class AutoCompleteComponent implements OnDestroy {
   private requestSub: Subscription;
   protected longitudeFromClient = 59.334591;
   protected latitudeFromClient = 18.06324;
+  matcher = new MyErrorStateMatcher();
 
   constructor(public translate: TranslateService, private http: HttpClient) {
     if (navigator.geolocation) {
@@ -34,7 +44,7 @@ export class AutoCompleteComponent implements OnDestroy {
     } else {
       console.log('No support for geolocation');
     }
-    this.valueChangesSub = this.inputFieldFormControl.valueChanges.subscribe((value) => {
+    this.valueChangesSub = this.addressSuggestionInput.valueChanges.subscribe((value) => {
       if (this.userInputTimeout) {
         window.clearTimeout(this.userInputTimeout);
       }
@@ -103,6 +113,13 @@ export class AutoCompleteComponent implements OnDestroy {
 
   public optionSelectionChange(option: PlaceSuggestion, event: MatOptionSelectionChange) {
     if (event.isUserInput) {
+      if (option.addressInformation.resultType !== 'houseNumber') {
+        this.addressSuggestionInput.setErrors({
+          notHouseAddress: true,
+        });
+        return;
+      }
+      this.addressSuggestionInput.setErrors(null);
       this.choosenOption = option;
       this.locationChange.emit(option);
     }
@@ -153,6 +170,17 @@ export interface PlaceSuggestion {
   shortAddress: string;
   fullAddress: string;
   addressInformation: AddressInformation;
+}
+
+export function addressWithoutHoseNumberNotAllowed(): ValidatorFn {
+  return (control: AbstractControl): { [key: string]: any } | null => {
+    if (!control.errors) {
+      return null;
+    }
+    if (control.errors.notHouseAddress) {
+      return { notHouseAddress: true };
+    }
+  };
 }
 
 interface AddressInformation {
