@@ -80,8 +80,14 @@
   }
 }
 
+//mat-form-field {
+//  width: 95%;
+//}
+//app-autocomplete {
+//  width: 98%;
+//}
+
 .rform {
-  display: flex;
   flex-direction: row;
   width: 100%;
   height: 90%;
@@ -99,9 +105,18 @@
     }
   }
 
+  .email-field {
+    width: 100%;
+  }
+  .next-button {
+    display: inline-block;
+    margin-bottom: 15px;
+  }
+
   app-autocomplete {
+    width: 96%;
     @media only screen and (max-width: 600px) {
-      width: 100%;
+      width: 300px;
     }
   }
 }
@@ -149,6 +164,7 @@
     }
   }
 }
+
 .done {
   display: flex;
   flex-direction: column;

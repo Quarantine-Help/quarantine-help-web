@@ -14,62 +14,44 @@
       <mat-step [stepControl]="basicInfoForm" errorMessage="{{ 'form.error.generic' | translate }}">
         <form [formGroup]="basicInfoForm" class="rform">
           <ng-template matStepLabel> {{ 'form.info1' | translate }} </ng-template>
-          <mat-form-field appearance="fill">
-            <mat-label> {{ 'form.firstname' | translate }} </mat-label>
-            <mat-icon matSuffix>person</mat-icon>
-            <input matInput placeholder="{{ 'form.firstname' | translate }}" formControlName="firstName" required />
-          </mat-form-field>
-          <mat-form-field appearance="fill">
-            <mat-label> {{ 'form.lastname' | translate }} </mat-label>
-            <mat-icon matSuffix>person</mat-icon>
-            <input matInput placeholder="{{ 'form.lastname' | translate }}" formControlName="lastName" required />
-          </mat-form-field>
-          <mat-form-field appearance="fill">
-            <mat-label>{{ 'form.email' | translate }}</mat-label>
-            <mat-icon matSuffix>email</mat-icon>
-            <input matInput placeholder="{{ 'form.email' | translate }}" formControlName="email" required />
-          </mat-form-field>
-          <app-autocomplete (locationChange)="autocompleteChanged($event)"></app-autocomplete>
-          <mat-form-field appearance="fill">
-            <mat-label>{{ 'form.housenumber' | translate }}</mat-label>
-            <mat-icon matSuffix>house</mat-icon>
-            <input matInput placeholder="{{ 'form.housenumber' | translate }}" formControlName="housenumber" required />
-          </mat-form-field>
-          <mat-form-field appearance="fill">
-            <mat-label>{{ 'form.city' | translate }}</mat-label>
-            <mat-icon matSuffix>location_on</mat-icon>
-            <input matInput placeholder="{{ 'form.city' | translate }}" formControlName="city" required />
-          </mat-form-field>
-
-          <mat-form-field appearance="fill">
-            <mat-label>{{ 'form.country' | translate }}</mat-label>
-            <mat-icon matSuffix>public</mat-icon>
-            <input matInput placeholder="{{ 'form.country' | translate }}" formControlName="country" required />
-          </mat-form-field>
-          <mat-form-field appearance="fill">
-            <mat-label>{{ 'form.postcode' | translate }}</mat-label>
-            <mat-icon matSuffix>pin_drop</mat-icon>
-            <input
-              matInput
-              type="number"
-              placeholder="{{ 'form.postcode' | translate }}"
-              formControlName="postcode"
-              required
-            />
-          </mat-form-field>
-          <mat-form-field appearance="fill">
-            <mat-label>{{ 'form.phone' | translate }}</mat-label>
-            <mat-icon matSuffix>phone</mat-icon>
-            <input matInput placeholder="{{ 'form.phone' | translate }}" formControlName="phone" required />
-          </mat-form-field>
-          <mat-form-field appearance="fill">
-            <mat-label>{{ 'form.address2' | translate }}</mat-label>
-            <mat-icon matSuffix>map</mat-icon>
-            <input matInput placeholder="{{ 'form.address2' | translate }}" formControlName="secondAddress" />
-          </mat-form-field>
-          <!-- <div>
-                        <button mat-button matStepperNext>Next</button>
-                    </div> -->
+          <mat-grid-list cols="4" rowHeight="100px">
+            <mat-grid-tile [colspan]="1" [rowspan]="1">
+              <mat-form-field appearance="fill">
+                <mat-label> {{ 'form.firstname' | translate }} </mat-label>
+                <mat-icon matSuffix>person</mat-icon>
+                <input matInput placeholder="{{ 'form.firstname' | translate }}" formControlName="firstName" required />
+              </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile [colspan]="1" [rowspan]="1">
+              <mat-form-field appearance="fill">
+                <mat-label> {{ 'form.lastname' | translate }} </mat-label>
+                <mat-icon matSuffix>person</mat-icon>
+                <input matInput placeholder="{{ 'form.lastname' | translate }}" formControlName="lastName" required />
+              </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile [colspan]="2" [rowspan]="1">
+              <app-autocomplete (locationChange)="autocompleteChanged($event)"></app-autocomplete>
+            </mat-grid-tile>
+          </mat-grid-list>
+          <mat-grid-list cols="4" rowHeight="100px">
+            <mat-grid-tile [colspan]="2" [rowspan]="1">
+              <mat-form-field appearance="fill" class="email-field">
+                <mat-label>{{ 'form.email' | translate }}</mat-label>
+                <mat-icon matSuffix>email</mat-icon>
+                <input matInput placeholder="{{ 'form.email' | translate }}" formControlName="email" required />
+              </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile [colspan]="1" [rowspan]="1">
+              <mat-form-field appearance="fill">
+                <mat-label>{{ 'form.phone' | translate }}</mat-label>
+                <mat-icon matSuffix>phone</mat-icon>
+                <input matInput placeholder="{{ 'form.phone' | translate }}" formControlName="phone" required />
+              </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile [colspan]="1" [rowspan]="1">
+              <button mat-raised-button color="primary" matStepperNext class="next-button">Next</button>
+            </mat-grid-tile>
+          </mat-grid-list>
         </form>
       </mat-step>
       <mat-step [stepControl]="additionalForm" errorMessage="{{ 'form.error.generic' | translate }}">

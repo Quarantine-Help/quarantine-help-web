@@ -35,6 +35,7 @@ export class RegisterComponent implements OnInit {
     city: new FormControl('', [Validators.required]),
     phone: new FormControl('', [Validators.required]),
     country: new FormControl('', [Validators.required]),
+    countryName: new FormControl(''),
     postcode: new FormControl('', [Validators.required]),
     secondAddress: new FormControl(''),
   });
@@ -48,6 +49,12 @@ export class RegisterComponent implements OnInit {
   }
 
   autocompleteChanged(value: any) {
+    if (value.resultType !== 'houseNumber') {
+      // @TODO Set error later.
+      // this.addressSuggestionInput.setErrors({
+      //     notHouseAddress: true,
+      // })
+    }
     if (value && value.addressInformation) {
       const addressInformation = value.addressInformation;
       if (addressInformation.city) {
@@ -64,6 +71,7 @@ export class RegisterComponent implements OnInit {
       }
       if (addressInformation.countryCode) {
         this.basicInfoForm.get('country').setValue(addressInformation.countryCode);
+        this.basicInfoForm.get('countryName').setValue(addressInformation.countryName);
       }
       if (addressInformation.secondLineOfAddress) {
         this.basicInfoForm.get('secondAddress').setValue(addressInformation.secondLineOfAddress);
@@ -76,6 +84,10 @@ export class RegisterComponent implements OnInit {
   }
   get passwordconfirm() {
     return this.additionalForm.get('passwordconfirm');
+  }
+
+  get addressSuggestionInput() {
+    return this.basicInfoForm.get('addressSuggestionInput');
   }
 
   compare(): void {

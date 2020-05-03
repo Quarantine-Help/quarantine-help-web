@@ -7,8 +7,10 @@
     [matAutocomplete]="auto"
     [formControl]="inputFieldFormControl"
     placeholder="Enter location here"
+    id="addressSuggestionInput"
+    formControlName="addressSuggestionInput"
+    required
   />
-
   <mat-autocomplete #auto="matAutocomplete" autoActiveFirstOption>
     <mat-option
       *ngFor="let option of searchOptions | async"

@@ -40,7 +40,8 @@
         "password": "Bitte geben Sie das Passwort ein"
       },
       "notmatched": "Der eingegebene Text stimmte nicht mit dem Passwort überein",
-      "minlength": "Das Passwort muss mindestens 6 Zeichen enthalten"
+      "minlength": "Das Passwort muss mindestens 6 Zeichen enthalten",
+      "notHouseAddress": "Please select your complete home address"
     }
   }
 }

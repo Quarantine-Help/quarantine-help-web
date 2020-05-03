@@ -96,6 +96,7 @@ export class AutoCompleteComponent implements OnDestroy {
   private generateShortAddress(properties: any): string {
     return properties.title;
   }
+
   private generateFullAddress(properties: any): string {
     return properties.title;
   }
@@ -129,7 +130,9 @@ export class AutoCompleteComponent implements OnDestroy {
       houseNumber = addressExtracted.houseNumber;
       firstLineOfAddress = `${firstLineOfAddress} ${houseNumber}`;
     }
+    const resultType = feature.resultType;
     return {
+      resultType,
       postCode,
       position: {
         latitude: feature.position.lat,
@@ -137,6 +140,7 @@ export class AutoCompleteComponent implements OnDestroy {
       },
       placeId: addressExtracted.id,
       countryCode: addressExtracted.countryCode,
+      countryName: addressExtracted.countryName,
       city: addressExtracted.city,
       housenumber: houseNumber,
       secondLineOfAddress: addressExtracted.district,
@@ -167,5 +171,7 @@ interface AddressInformation {
   latitude: string;
   longitude: string;
   countryCode: string;
+  countryName: string;
   locationId: string;
+  resultType: string;
 }
