@@ -45,6 +45,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HeaderComponent } from './components/header/header.component';
 import { LOCATION_INITIALIZED, CommonModule } from '@angular/common';
 import { AutoCompleteComponent } from './components/auto-complete/auto-complete.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 export function appInitializerFactory(translate: TranslateService, injector: Injector) {
   return () =>
@@ -120,6 +121,7 @@ export function createTranslateLoader(http: HttpClient) {
     MatSortModule,
     MatPaginatorModule,
     HttpClientModule,
+    FlexLayoutModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

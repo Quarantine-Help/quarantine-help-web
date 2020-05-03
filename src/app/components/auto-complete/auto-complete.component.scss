@@ -1,8 +1,8 @@
-.auto {
-  width: 265px;
-  margin: 15px;
+mat-form-field {
+  margin: 1%;
+  width: 88%;
 
   @media only screen and (max-width: 600px) {
-    width: 92%;
+    width: 100%;
   }
 }

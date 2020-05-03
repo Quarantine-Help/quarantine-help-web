@@ -31,11 +31,11 @@ export class RegisterComponent implements OnInit {
     firstName: new FormControl('', [Validators.required]),
     lastName: new FormControl('', [Validators.required]),
     email: new FormControl('', [Validators.required, Validators.email]),
-    street: new FormControl('', [Validators.required]),
     housenumber: new FormControl('', [Validators.required]),
     city: new FormControl('', [Validators.required]),
     phone: new FormControl('', [Validators.required]),
     country: new FormControl('', [Validators.required]),
+    countryName: new FormControl(''),
     postcode: new FormControl('', [Validators.required]),
     secondAddress: new FormControl(''),
   });
@@ -49,26 +49,26 @@ export class RegisterComponent implements OnInit {
   }
 
   autocompleteChanged(value: any) {
-    console.log('LALA', value);
-    if (value && value.data) {
-      const info = value.data.address;
-      if (info.city) {
-        this.basicInfoForm.get('city').setValue(info.city);
+    if (value && value.addressInformation) {
+      const addressInformation = value.addressInformation;
+      if (addressInformation.city) {
+        this.basicInfoForm.get('city').setValue(addressInformation.city);
       }
-      if (info.houseNumber) {
-        this.basicInfoForm.get('housenumber').setValue(info.houseNumber);
+      if (addressInformation.housenumber) {
+        this.basicInfoForm.get('housenumber').setValue(addressInformation.housenumber);
       }
-      if (info.street) {
-        this.basicInfoForm.get('street').setValue(info.street);
+      if (addressInformation.city) {
+        this.basicInfoForm.get('city').setValue(addressInformation.city);
       }
-      if (info.city) {
-        this.basicInfoForm.get('city').setValue(info.city);
+      if (addressInformation.postCode) {
+        this.basicInfoForm.get('postcode').setValue(addressInformation.postCode);
       }
-      if (info.postalCode) {
-        this.basicInfoForm.get('postcode').setValue(info.postalCode);
+      if (addressInformation.countryCode) {
+        this.basicInfoForm.get('country').setValue(addressInformation.countryCode);
+        this.basicInfoForm.get('countryName').setValue(addressInformation.countryName);
       }
-      if (info.country) {
-        this.basicInfoForm.get('country').setValue(info.country);
+      if (addressInformation.secondLineOfAddress) {
+        this.basicInfoForm.get('secondAddress').setValue(addressInformation.secondLineOfAddress);
       }
     }
   }
