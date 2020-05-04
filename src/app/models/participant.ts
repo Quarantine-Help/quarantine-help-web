@@ -1,6 +1,6 @@
 export enum IAuthMode {
   LOGIN,
-  REGISTER
+  REGISTER,
 }
 
 export interface ILoginForm {
@@ -9,13 +9,11 @@ export interface ILoginForm {
 }
 
 export enum EUserType {
-  HELPER,
-  AFFECTED,
-  AUTHORITIES,
-  THIRD_PARTY
+  HL,
+  AF,
 }
 
-export interface IRegisterForm {
+export interface Participant {
   firstName: string;
   lastName: string;
   email: string;
@@ -28,7 +26,5 @@ export interface IRegisterForm {
   postcode: number;
   city: string;
   phone: number;
-  is_available: boolean;
   crisis: string;
-  abilities: any;
 }

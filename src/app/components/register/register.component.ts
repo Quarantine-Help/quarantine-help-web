@@ -4,6 +4,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { TranslateService } from '@ngx-translate/core';
 import { PlaceSuggestion } from '../auto-complete/auto-complete.component';
+import { AuthService } from '../../auth/auth.service';
+import { ParticipantService } from '../../services/participant.service';
 
 @Component({
   selector: 'app-register',
@@ -20,11 +22,9 @@ export class RegisterComponent implements OnInit {
   additionalForm = new FormGroup({
     // position: new FormControl('', [Validators.required]),
     password: new FormControl('', [Validators.required, Validators.minLength(6)]),
+    email: new FormControl(''),
     passwordconfirm: new FormControl('', [Validators.required, Validators.minLength(6)]),
-    /* placeId: new FormControl('', [Validators.required]),
-    is_available: new FormControl('', [Validators.required]),
-    crisis: new FormControl('', [Validators.required]),
-    abilities: new FormControl('', [Validators.required]), */
+    /* placeId: new FormControl('', [Validators.required]), */
   });
 
   basicInfoForm = new FormGroup({
@@ -38,9 +38,16 @@ export class RegisterComponent implements OnInit {
     countryName: new FormControl(''),
     postcode: new FormControl('', [Validators.required]),
     secondAddress: new FormControl(''),
+    position: new FormControl(''),
+    placeId: new FormControl(''),
+    firstLineOfAddress: new FormControl(''),
   });
 
-  constructor(private routerMachinery: Router, private translateMachinery: TranslateService) {}
+  constructor(
+    private routerMachinery: Router,
+    private translateMachinery: TranslateService,
+    private participantService: ParticipantService
+  ) {}
 
   ngOnInit() {}
 
@@ -48,14 +55,15 @@ export class RegisterComponent implements OnInit {
     this.routerMachinery.navigate(['register']);
   }
 
+  registerParticipant(): void {
+    this.participantService.registerParticipant(this.basicInfoForm.value, this.additionalForm.value);
+  }
+
   autocompleteChanged(value: any) {
     if (value && value.addressInformation) {
       const addressInformation = value.addressInformation;
       if (addressInformation.city) {
         this.basicInfoForm.get('city').setValue(addressInformation.city);
-      }
-      if (addressInformation.housenumber) {
-        this.basicInfoForm.get('housenumber').setValue(addressInformation.housenumber);
       }
       if (addressInformation.city) {
         this.basicInfoForm.get('city').setValue(addressInformation.city);
@@ -70,6 +78,9 @@ export class RegisterComponent implements OnInit {
       if (addressInformation.secondLineOfAddress) {
         this.basicInfoForm.get('secondAddress').setValue(addressInformation.secondLineOfAddress);
       }
+      this.basicInfoForm.get('firstLineOfAddress').setValue(addressInformation.firstLineOfAddress);
+      this.basicInfoForm.get('position').setValue(addressInformation.position);
+      this.basicInfoForm.get('placeId').setValue(addressInformation.placeId);
     }
   }
 
