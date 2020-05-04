@@ -73,6 +73,10 @@ export class AutoCompleteComponent implements OnDestroy {
   private generateSuggestions(text: string) {
     // @FIXME Move me to env later
     const HERE_MAPS_KEY = 'INxGhspY9TqShx3heSZSBmobOsutPeE9eJaTxfHiiQQ';
+    if (text.includes(', ')) {
+      // Can happen as auto complete goes up and you want to edit.
+      text = text.split(',')[0];
+    }
     const queryParams = new URLSearchParams({
       apiKey: HERE_MAPS_KEY,
       q: text,

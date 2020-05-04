@@ -49,7 +49,9 @@
               </mat-form-field>
             </mat-grid-tile>
             <mat-grid-tile [colspan]="1" [rowspan]="1">
-              <button mat-raised-button color="primary" matStepperNext class="next-button">Next</button>
+              <div class="actions">
+                <button mat-raised-button color="primary" matStepperNext class="next-button">Next</button>
+              </div>
             </mat-grid-tile>
           </mat-grid-list>
         </form>
@@ -57,6 +59,17 @@
       <mat-step [stepControl]="additionalForm" errorMessage="{{ 'form.error.generic' | translate }}">
         <form [formGroup]="additionalForm" class="pform">
           <ng-template matStepLabel> {{ 'form.set-password' | translate }} </ng-template>
+          <mat-form-field appearance="outline" class="email-field">
+            <mat-label>{{ 'form.email' | translate }}</mat-label>
+            <mat-icon matSuffix>email</mat-icon>
+            <input
+              matInput
+              placeholder="{{ 'form.email' | translate }}"
+              formControlName="email"
+              disabled
+              value="{{ this.basicInfoForm.get('email').value }}"
+            />
+          </mat-form-field>
           <mat-form-field appearance="outline">
             <mat-label>{{ 'form.password' | translate }}</mat-label>
             <mat-icon matSuffix>lock</mat-icon>

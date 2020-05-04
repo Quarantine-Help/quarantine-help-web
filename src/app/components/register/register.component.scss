@@ -80,13 +80,6 @@
   }
 }
 
-//mat-form-field {
-//  width: 95%;
-//}
-//app-autocomplete {
-//  width: 98%;
-//}
-
 .rform {
   flex-direction: row;
   width: 100%;
@@ -108,6 +101,7 @@
   .email-field {
     width: 100%;
   }
+
   .next-button {
     display: inline-block;
     margin-bottom: 15px;
@@ -117,6 +111,34 @@
     width: 96%;
     @media only screen and (max-width: 600px) {
       width: 300px;
+    }
+  }
+
+  .actions {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 45%;
+
+    @media only screen and (max-width: 600px) {
+      width: 100%;
+      flex-direction: column;
+      padding-top: 25px;
+    }
+
+    button {
+      width: 100%;
+      background: black;
+      color: white;
+      text-transform: uppercase;
+      border-radius: 0;
+      padding: 5px;
+
+      @media only screen and (max-width: 600px) {
+        width: 100%;
+        margin: 5px;
+      }
     }
   }
 }
