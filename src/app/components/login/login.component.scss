@@ -71,7 +71,7 @@
       display: flex;
       .icon {
         height: 60px;
-        width: 60px;
+        max-width: 60px;
       }
       .mat-title {
         color: #6a8caf;
@@ -83,10 +83,12 @@
       // box-shadow: none;
       // box-shadow: 12px 13px 0px 0px rgba(0, 0, 0, 0.05), 0 1px 1px 0 rgba(0, 0, 0, 0), 0 1px 3px 0 rgba(0, 0, 0, 0.14);
       display: flex;
-      flex-basis: 65%;
+      flex-basis: 80%;
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      max-width: 60%;
+      padding: 16px;
 
       @media only screen and (max-width: 600px) {
         width: 90%;
