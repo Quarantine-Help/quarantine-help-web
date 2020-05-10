@@ -1,10 +1,12 @@
+* {
+  box-sizing: border-box;
+}
 .login {
   display: flex;
-  height: 100%;
-  width: 100%;
+  height: 100vh;
 
   &-main-1 {
-    flex-basis: 56%;
+    flex-basis: 56vw;
     &-image {
       max-width: 100%;
       opacity: 0.75;
@@ -58,7 +60,7 @@
   // }
 
   &-main-2 {
-    flex-basis: 44%;
+    flex-basis: 44vw;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -69,25 +71,34 @@
     }
     &-heading {
       display: flex;
+      padding-top: 12vh;
       .icon {
-        height: 60px;
-        max-width: 60px;
+        height: 80px;
+        max-width: 80px;
       }
       .mat-title {
+        padding-top: 0.5rem;
+        align-items: center;
         color: #6a8caf;
       }
+    }
+    &-card {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      padding: 8vh;
     }
 
     mat-card {
       //background: #add8e657;
-      // box-shadow: none;
+      box-shadow: none;
       // box-shadow: 12px 13px 0px 0px rgba(0, 0, 0, 0.05), 0 1px 1px 0 rgba(0, 0, 0, 0), 0 1px 3px 0 rgba(0, 0, 0, 0.14);
       display: flex;
-      flex-basis: 80%;
+      // flex-basis: 80%;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      max-width: 60%;
+      max-width: 70%;
       padding: 16px;
 
       @media only screen and (max-width: 600px) {
@@ -106,11 +117,12 @@
           background-color: #6a8caf;
           color: white;
           width: 100%;
-          height: 50px;
+          height: 40px;
           border-radius: 50px;
-          padding: 10px 0;
+          padding: 3px 0 5px;
         }
         .signup {
+          color: #707070;
           width: 100%;
           height: 50px;
         }
