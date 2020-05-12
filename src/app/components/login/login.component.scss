@@ -74,12 +74,13 @@
       padding-top: 12vh;
       .icon {
         height: 80px;
-        max-width: 80px;
+        max-width: 98px;
       }
       .mat-title {
         padding-top: 0.5rem;
         align-items: center;
         color: #6a8caf;
+        font: Bold Italic 30px/36px Consolas;
       }
     }
     &-card {
@@ -109,8 +110,12 @@
         width: 75%;
 
         mat-form-field {
+          color: #707070;
           width: 100%;
           margin: 10px 0px;
+          // mat-label{
+          // font: Regular 20px/24px Century Gothic;
+          // }
         }
 
         .submit {
@@ -120,6 +125,7 @@
           height: 40px;
           border-radius: 50px;
           padding: 3px 0 5px;
+          font: Regular 22px/27px Century Gothic;
         }
         .signup {
           color: #707070;

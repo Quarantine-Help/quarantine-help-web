@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IAuthMode, ILoginForm } from 'src/app/models/auth';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,7 @@ export class LoginComponent implements OnInit {
     password: new FormControl('', Validators.required),
   });
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit() {}
 
@@ -27,5 +28,8 @@ export class LoginComponent implements OnInit {
 
   get password() {
     return this.loginForm.get('password');
+  }
+  toSignup() {
+    this.router.navigate(['/register']);
   }
 }
