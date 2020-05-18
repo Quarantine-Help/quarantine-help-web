@@ -1,7 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
+
 * {
   box-sizing: border-box;
 }
+
 .login {
   display: flex;
   height: 100vh;
@@ -14,6 +17,7 @@
       opacity: 0.75;
       position: relative;
       right: 180px;
+      height: 100%;
     }
   }
 
@@ -27,15 +31,18 @@
     &-heading {
       display: flex;
       padding-top: 12vh;
+      align-items: center;
+
       .icon {
-        height: 70px;
-        max-width: 75px;
+        max-width: 100px;
+        margin-right: 1vw;
       }
+
       .mat-title {
-        padding-top: 0.5rem;
+        padding-top: 1.5rem;
         align-items: center;
         color: #6a8caf;
-        font: Bold Italic 24px/28px Consolas;
+        font: Italic 1.8em/1.2em 'Inconsolata', monospace;
       }
     }
 
@@ -57,6 +64,7 @@
         .login-form {
           width: 90%;
           font-family: 'Questrial', sans-serif;
+
           ::ng-deep .mat-form-field {
             .mat-form-field-wrapper {
               .mat-form-field-underline {
@@ -64,12 +72,14 @@
               }
             }
           }
+
           mat-form-field {
             color: #707070;
             width: 100%;
             margin: 10px 0px;
             position: relative;
             bottom: 15%;
+
             mat-label {
               font-family: 'Questrial', sans-serif;
               font-size: 17px;
@@ -86,6 +96,7 @@
             font-family: 'Questrial', sans-serif;
             font-size: 19px;
           }
+
           .signup {
             color: #707070;
             width: 100%;
@@ -98,16 +109,19 @@
     }
   }
 }
+
 @media only screen and (min-device-width: 320px) and (max-device-width: 1030px) {
   .login {
     &-main-1 {
       flex-basis: 0vw;
     }
+
     &-main-2 {
       flex-basis: 100vw;
     }
   }
 }
+
 @media screen and (min-width: 1800px) {
   .login {
     &-main-1 {
