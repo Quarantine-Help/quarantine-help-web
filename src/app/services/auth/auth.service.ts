@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { environment } from '../../environments/environment';
+import { environment } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -25,6 +25,8 @@ export class AuthService {
       .pipe(
         map((user) => {
           this.isLoggedIn = true;
+          // After this, immediately call the me user service.
+
           return user;
         })
       );
