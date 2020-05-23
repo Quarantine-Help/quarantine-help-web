@@ -1,4 +1,4 @@
-<!-- <div class="header">
+<div class="header">
   <div class="header_left" (click)="navigateTo('cockpit')">
     <div class="header_left__square"></div>
     <span class="header_left__brand">Quarantined <br />Helper</span>
@@ -8,9 +8,7 @@
       class="language"
       [matMenuTriggerFor]="menu"
       [style.backgroundImage]="languageIcon[translateMachinery.currentLang]"
-    > -->
-<!-- {{translateMachinery.currentLang}} -->
-<!-- </div>
+    >{{translateMachinery.currentLang}}</div>
     <mat-menu #menu="matMenu" xPosition="before">
       <button
         class="langmenu"
@@ -22,12 +20,12 @@
         {{ lang }}
       </button>
     </mat-menu> -->
-<!-- <span class="header_right__register" [routerLink]="'/login'"> {{ 'auth.login' | translate }} </span> -->
-<!-- <button *ngIf="!currentUser" mat-stroked-button class="header_right__register" [routerLink]="buttonInfo.url">
+<span class="header_right__register" [routerLink]="'/login'"> {{ 'auth.login' | translate }} </span>
+<button *ngIf="!currentUser" mat-stroked-button class="header_right__register" [routerLink]="buttonInfo.url">
       {{ buttonInfo?.title }}
     </button>
     <button *ngIf="currentUser" mat-stroked-button class="header_right__register">
       {{ 'auth.logout' | translate }}
     </button>
   </div>
-</div> -->
+</div>

@@ -80,6 +80,8 @@ export class RegisterComponent implements OnInit {
     return this.additionalForm.get('passwordconfirm');
   }
 
+  registerParticipant() {}
+
   compare(): void {
     if (this.password.value !== this.passwordconfirm.value) {
       this.passwordconfirm.setErrors({

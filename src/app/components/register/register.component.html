@@ -1,36 +1,43 @@
 <div class="register">
-  <!--    <div class="register-head">
-        <div class="register-head_left" (click)="navigateTo('cockpit')">
-            <div class="register-head_left__square"></div>
-            <span class="register-head_left__brand">Quarantined <br>Helper</span>
-        </div>
-        <div class="register-head_right" [routerLink]="'/login'">
-            <span class="register-head_right__register"> {{ 'auth.login' | translate }} </span>
-        </div>
-    </div> -->
+  <div class="register-head">
+    <div class="register-head_left" (click)="navigateTo('cockpit')">
+      <div class="register-head_left__square"></div>
+      <span class="register-head_left__brand">Quarantined <br>Helper</span>
+    </div>
+    <div class="register-head_right" [routerLink]="'/login'">
+      <span
+        class="register-head_right__register"> {{ 'auth.login' | translate }} </span>
+    </div>
+  </div>
 
   <div class="register-main">
     <mat-horizontal-stepper linear #stepper class="stepper">
-      <mat-step [stepControl]="basicInfoForm" errorMessage="{{ 'form.error.generic' | translate }}">
+      <mat-step [stepControl]="basicInfoForm"
+                errorMessage="{{ 'form.error.generic' | translate }}">
         <form [formGroup]="basicInfoForm" class="rform">
-          <ng-template matStepLabel> {{ 'form.info1' | translate }} </ng-template>
+          <ng-template
+            matStepLabel> {{ 'form.info1' | translate }} </ng-template>
           <mat-grid-list cols="4" rowHeight="100px">
             <mat-grid-tile [colspan]="1" [rowspan]="1">
               <mat-form-field appearance="fill">
                 <mat-label> {{ 'form.firstname' | translate }} </mat-label>
                 <mat-icon matSuffix>person</mat-icon>
-                <input matInput placeholder="{{ 'form.firstname' | translate }}" formControlName="firstName" required />
+                <input matInput
+                       placeholder="{{ 'form.firstname' | translate }}"
+                       formControlName="firstName" required/>
               </mat-form-field>
             </mat-grid-tile>
             <mat-grid-tile [colspan]="1" [rowspan]="1">
               <mat-form-field appearance="fill">
                 <mat-label> {{ 'form.lastname' | translate }} </mat-label>
                 <mat-icon matSuffix>person</mat-icon>
-                <input matInput placeholder="{{ 'form.lastname' | translate }}" formControlName="lastName" required />
+                <input matInput placeholder="{{ 'form.lastname' | translate }}"
+                       formControlName="lastName" required/>
               </mat-form-field>
             </mat-grid-tile>
             <mat-grid-tile [colspan]="2" [rowspan]="1">
-              <app-autocomplete (locationChange)="autocompleteChanged($event)"></app-autocomplete>
+              <app-autocomplete
+                (locationChange)="autocompleteChanged($event)"></app-autocomplete>
             </mat-grid-tile>
           </mat-grid-list>
           <mat-grid-list cols="4" rowHeight="100px">
@@ -38,34 +45,39 @@
               <mat-form-field appearance="fill" class="email-field">
                 <mat-label>{{ 'form.email' | translate }}</mat-label>
                 <mat-icon matSuffix>email</mat-icon>
-                <input matInput placeholder="{{ 'form.email' | translate }}" formControlName="email" required />
+                <input matInput placeholder="{{ 'form.email' | translate }}"
+                       formControlName="email" required/>
               </mat-form-field>
             </mat-grid-tile>
             <mat-grid-tile [colspan]="1" [rowspan]="1">
               <mat-form-field appearance="fill">
                 <mat-label>{{ 'form.phone' | translate }}</mat-label>
                 <mat-icon matSuffix>phone</mat-icon>
-                <input matInput placeholder="{{ 'form.phone' | translate }}" formControlName="phone" required />
+                <input matInput placeholder="{{ 'form.phone' | translate }}"
+                       formControlName="phone" required/>
               </mat-form-field>
             </mat-grid-tile>
             <mat-grid-tile [colspan]="1" [rowspan]="1">
               <div class="actions">
-                <button mat-raised-button color="primary" matStepperNext class="next-button">Next</button>
+                <button mat-raised-button color="primary" matStepperNext
+                        class="next-button">Next
+                </button>
               </div>
             </mat-grid-tile>
           </mat-grid-list>
         </form>
       </mat-step>
-      <mat-step [stepControl]="additionalForm" errorMessage="{{ 'form.error.generic' | translate }}">
+      <mat-step [stepControl]="additionalForm"
+                errorMessage="{{ 'form.error.generic' | translate }}">
         <form [formGroup]="additionalForm" class="pform">
-          <ng-template matStepLabel> {{ 'form.set-password' | translate }} </ng-template>
+          <ng-template
+            matStepLabel> {{ 'form.set-password' | translate }} </ng-template>
           <mat-form-field appearance="outline" class="email-field">
             <mat-label>{{ 'form.email' | translate }}</mat-label>
             <mat-icon matSuffix>email</mat-icon>
             <input
               matInput
               placeholder="{{ 'form.email' | translate }}"
-              formControlName="email"
               disabled
               value="{{ this.basicInfoForm.get('email').value }}"
             />
@@ -80,9 +92,13 @@
               placeholder="{{ 'form.password' | translate }}"
               formControlName="password"
             />
-            <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
-              <div *ngIf="password.errors.required" class="error">{{ 'form.error.required.password' | translate }}</div>
-              <div *ngIf="password.errors.minlength" class="error">{{ 'form.error.minlength' | translate }}</div>
+            <div
+              *ngIf="password.invalid && (password.dirty || password.touched)"
+              class="alert alert-danger">
+              <div *ngIf="password.errors.required"
+                   class="error">{{ 'form.error.required.password' | translate }}</div>
+              <div *ngIf="password.errors.minlength"
+                   class="error">{{ 'form.error.minlength' | translate }}</div>
             </div>
           </mat-form-field>
           <mat-form-field appearance="outline">
@@ -104,7 +120,8 @@
               <div *ngIf="passwordconfirm.errors.required" class="error">
                 {{ 'form.error.required.password' | translate }}
               </div>
-              <div *ngIf="passwordconfirm.errors.minlength" class="error">{{ 'form.error.minlength' | translate }}</div>
+              <div *ngIf="passwordconfirm.errors.minlength"
+                   class="error">{{ 'form.error.minlength' | translate }}</div>
               <div *ngIf="passwordconfirm.errors.notmatched" class="error">
                 {{ 'form.error.notmatched' | translate }}
               </div>
@@ -112,8 +129,10 @@
           </mat-form-field>
 
           <div class="actions">
-            <button mat-button matStepperPrevious>{{ 'general.back' | translate }}</button>
-            <button mat-button matStepperNext>{{ 'general.next' | translate }}</button>
+            <button mat-button
+                    matStepperPrevious>{{ 'general.back' | translate }}</button>
+            <button mat-button matStepperNext
+                    (click)="registerParticipant()">{{'general.next' |translate}}</button>
           </div>
         </form>
       </mat-step>
@@ -121,7 +140,8 @@
         <ng-template matStepLabel>{{ 'form.done' | translate }}</ng-template>
         <div class="done">
           <p>{{ 'auth.success-registration' | translate }}</p>
-          <button mat-button matStepperPrevious>{{ 'auth.login-to-continue' | translate }}</button>
+          <button mat-button
+                  matStepperPrevious>{{ 'auth.login-to-continue' | translate }}</button>
         </div>
       </mat-step>
     </mat-horizontal-stepper>
