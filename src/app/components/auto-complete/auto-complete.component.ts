@@ -159,7 +159,7 @@ export class AutoCompleteComponent implements OnDestroy {
         latitude: feature.position.lat,
         longitude: feature.position.lng,
       },
-      placeId: addressExtracted.id,
+      placeId: feature.id,
       countryCode: addressExtracted.countryCode,
       countryName: addressExtracted.countryName,
       city: addressExtracted.city,
@@ -197,6 +197,7 @@ interface AddressInformation {
     longitude: number;
   };
   secondLineOfAddress: string;
+  firstLineOfAddress: string;
   postCode: string;
   city: string;
   housenumber: string;

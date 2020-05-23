@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { TranslateService } from '@ngx-translate/core';
-import { PlaceSuggestion } from '../auto-complete/auto-complete.component';
+import { Participant } from '../../models/participant';
+import { ParticipantService } from '../../services/participant/participant.service';
 
 @Component({
   selector: 'app-register',
@@ -17,14 +18,12 @@ import { PlaceSuggestion } from '../auto-complete/auto-complete.component';
   ],
 })
 export class RegisterComponent implements OnInit {
+  public participant: Participant;
+
   additionalForm = new FormGroup({
     // position: new FormControl('', [Validators.required]),
     password: new FormControl('', [Validators.required, Validators.minLength(6)]),
     passwordconfirm: new FormControl('', [Validators.required, Validators.minLength(6)]),
-    /* placeId: new FormControl('', [Validators.required]),
-    is_available: new FormControl('', [Validators.required]),
-    crisis: new FormControl('', [Validators.required]),
-    abilities: new FormControl('', [Validators.required]), */
   });
 
   basicInfoForm = new FormGroup({
@@ -37,10 +36,18 @@ export class RegisterComponent implements OnInit {
     country: new FormControl('', [Validators.required]),
     countryName: new FormControl(''),
     postcode: new FormControl('', [Validators.required]),
-    secondAddress: new FormControl(''),
+    secondLineOfAddress: new FormControl(''),
+    firstLineOfAddress: new FormControl(''),
+    positionLongitude: new FormControl(''),
+    positionLatitude: new FormControl(''),
+    placeId: new FormControl(''),
   });
 
-  constructor(private routerMachinery: Router, private translateMachinery: TranslateService) {}
+  constructor(
+    private routerMachinery: Router,
+    private translateMachinery: TranslateService,
+    private participantService: ParticipantService
+  ) {}
 
   ngOnInit() {}
 
@@ -68,22 +75,58 @@ export class RegisterComponent implements OnInit {
         this.basicInfoForm.get('countryName').setValue(addressInformation.countryName);
       }
       if (addressInformation.secondLineOfAddress) {
-        this.basicInfoForm.get('secondAddress').setValue(addressInformation.secondLineOfAddress);
+        this.basicInfoForm.get('secondLineOfAddress').setValue(addressInformation.secondLineOfAddress);
+      }
+      if (addressInformation.position) {
+        this.basicInfoForm.get('positionLongitude').setValue(addressInformation.position.longitude);
+        this.basicInfoForm.get('positionLatitude').setValue(addressInformation.position.latitude);
+      }
+      if (addressInformation.placeId) {
+        this.basicInfoForm.get('placeId').setValue(addressInformation.placeId);
+      }
+      if (addressInformation.firstLineOfAddress) {
+        this.basicInfoForm.get('firstLineOfAddress').setValue(addressInformation.firstLineOfAddress);
       }
     }
   }
 
-  get password() {
-    return this.additionalForm.get('password');
-  }
-  get passwordconfirm() {
-    return this.additionalForm.get('passwordconfirm');
+  get password(): string {
+    return this.additionalForm.get('password').value;
   }
 
-  registerParticipant() {}
+  get passwordconfirm() {
+    return this.additionalForm.get('passwordconfirm').value;
+  }
+
+  registerParticipant() {
+    this.participant = new Participant();
+    const participantBasicInformation = this.basicInfoForm.value;
+    const participantUserInfo: User = {
+      firstName: participantBasicInformation.firstName,
+      lastName: participantBasicInformation.lastName,
+      email: participantBasicInformation.email,
+      password: this.password,
+    };
+    this.participant.deserialize({
+      user: participantUserInfo,
+      position: {
+        longitude: participantBasicInformation.positionLongitude,
+        latitude: participantBasicInformation.positionLatitude,
+      },
+      type: 'AF',
+      country: participantBasicInformation.country,
+      placeId: participantBasicInformation.placeId,
+      postCode: participantBasicInformation.postcode,
+      city: participantBasicInformation.city,
+      phone: participantBasicInformation.phone,
+      firstLineOfAddress: participantBasicInformation.firstLineOfAddress,
+      secondLineOfAddress: participantBasicInformation.secondLineOfAddress,
+    });
+    this.participantService.registerParticipant(this.participant);
+  }
 
   compare(): void {
-    if (this.password.value !== this.passwordconfirm.value) {
+    if (this.password !== this.passwordconfirm) {
       this.passwordconfirm.setErrors({
         notmatched: true,
       });

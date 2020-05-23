@@ -46,6 +46,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { LOCATION_INITIALIZED, CommonModule } from '@angular/common';
 import { AutoCompleteComponent } from './components/auto-complete/auto-complete.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { AuthService } from './services/auth/auth.service';
 
 export function appInitializerFactory(translate: TranslateService, injector: Injector) {
   return () =>
