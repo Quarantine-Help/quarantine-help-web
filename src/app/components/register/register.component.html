@@ -159,96 +159,104 @@
   <!-- **************** -->
   
   <div class="register-main-2-card">
-    <mat-card class="card">
-      <form [formGroup]="basicInfoForm" class="rform">
+    <mat-tab-group>
+      <mat-tab label="Quarantined">
+        <mat-card class="card">
+          <form [formGroup]="basicInfoForm" class="rform">
+            
+            <mat-form-field floatLabel="never" appearance="legacy">
+              <mat-label> First Name </mat-label>
+              <input matInput
+                     placeholder="{{ 'form.firstname' | translate }}"
+                     formControlName="firstName" required/>
+            </mat-form-field>
         
-        <mat-form-field floatLabel="never" appearance="legacy">
-          <mat-label> First Name </mat-label>
-          <input matInput
-                 placeholder="{{ 'form.firstname' | translate }}"
-                 formControlName="firstName" required/>
-        </mat-form-field>
-    
-        <mat-form-field floatLabel="never" appearance="legacy">
-          <mat-label> Last Name </mat-label>
-                    <input matInput placeholder="{{ 'form.lastname' | translate }}"
-                           formControlName="lastName" required/>
-        </mat-form-field>
-    
-        <mat-form-field floatLabel="never" appearance="legacy">
-          <mat-label> Address </mat-label>
-          <input matInput
-                 placeholder="{{ 'form.firstname' | translate }}"
-                 formControlName="firstName" required/>
-        </mat-form-field>
-    
-        <mat-form-field floatLabel="never" appearance="legacy">
-          <mat-label>Email address</mat-label>
-          <input matInput placeholder="{{ 'form.email' | translate }}"
-                 formControlName="email" required/>
-        </mat-form-field>
-    
-        <mat-form-field floatLabel="never" appearance="legacy">
-          <mat-label>Phone number</mat-label>
-                    <input matInput placeholder="{{ 'form.phone' | translate }}"
-                           formControlName="phone" required/>
-        </mat-form-field>
-    
-        <mat-form-field floatLabel="never" appearance="legacy">
-          <mat-label>Password</mat-label>
-          <input
-            matInput
-            id="password"
-            type="password"
-            placeholder="{{ 'form.password' | translate }}"
-            formControlName="password"
-          />
-          <div
-            *ngIf="password.invalid && (password.dirty || password.touched)"
-            class="alert alert-danger">
-            <div *ngIf="password.errors.required"
-                 class="error">{{ 'form.error.required.password' | translate }}</div>
-            <div *ngIf="password.errors.minlength"
-                 class="error">{{ 'form.error.minlength' | translate }}</div>
-          </div>
-        </mat-form-field>
-    
-        <mat-form-field floatLabel="never" appearance="legacy">
-          <mat-label>Confirm password</mat-label>
-                <input
-                  matInput
-                  id="passwordconfirm"
-                  type="password"
-                  placeholder="{{ 'form.confirm-password' | translate }}"
-                  formControlName="passwordconfirm"
-                  required
-                  (input)="compare()"
-                />
-                <div
-                  *ngIf="passwordconfirm.invalid && (passwordconfirm.dirty || passwordconfirm.touched)"
-                  class="alert alert-danger"
-                >
-                  <div *ngIf="passwordconfirm.errors.required" class="error">
-                    {{ 'form.error.required.password' | translate }}
-                  </div>
-                  <div *ngIf="passwordconfirm.errors.minlength"
-                       class="error">{{ 'form.error.minlength' | translate }}</div>
-                  <div *ngIf="passwordconfirm.errors.notmatched" class="error">
-                    {{ 'form.error.notmatched' | translate }}
-                  </div>
-                </div>
-        </mat-form-field>
+            <mat-form-field floatLabel="never" appearance="legacy">
+              <mat-label> Last Name </mat-label>
+                        <input matInput placeholder="{{ 'form.lastname' | translate }}"
+                               formControlName="lastName" required/>
+            </mat-form-field>
         
-      </form>
-      <button mat-flat-button class="submit">Sign up</button>
-      </mat-card>
-    
+            <mat-form-field floatLabel="never" appearance="legacy">
+              <mat-label> Address </mat-label>
+              <input matInput
+                     placeholder="{{ 'form.firstname' | translate }}"
+                     formControlName="firstName" required/>
+            </mat-form-field>
+        
+            <mat-form-field floatLabel="never" appearance="legacy">
+              <mat-label>Email address</mat-label>
+              <input matInput placeholder="{{ 'form.email' | translate }}"
+                     formControlName="email" required/>
+            </mat-form-field>
+        
+            <mat-form-field floatLabel="never" appearance="legacy">
+              <mat-label>Phone number</mat-label>
+                        <input matInput placeholder="{{ 'form.phone' | translate }}"
+                               formControlName="phone" required/>
+            </mat-form-field>
+        
+            <mat-form-field floatLabel="never" appearance="legacy">
+              <mat-label>Password</mat-label>
+              <input
+                matInput
+                id="password"
+                type="password"
+                placeholder="{{ 'form.password' | translate }}"
+                formControlName="password"
+              />
+              <div
+                *ngIf="password.invalid && (password.dirty || password.touched)"
+                class="alert alert-danger">
+                <div *ngIf="password.errors.required"
+                     class="error">{{ 'form.error.required.password' | translate }}</div>
+                <div *ngIf="password.errors.minlength"
+                     class="error">{{ 'form.error.minlength' | translate }}</div>
+              </div>
+            </mat-form-field>
+        
+            <mat-form-field floatLabel="never" appearance="legacy">
+              <mat-label>Confirm password</mat-label>
+                    <input
+                      matInput
+                      id="passwordconfirm"
+                      type="password"
+                      placeholder="{{ 'form.confirm-password' | translate }}"
+                      formControlName="passwordconfirm"
+                      required
+                      (input)="compare()"
+                    />
+                    <div
+                      *ngIf="passwordconfirm.invalid && (passwordconfirm.dirty || passwordconfirm.touched)"
+                      class="alert alert-danger"
+                    >
+                      <div *ngIf="passwordconfirm.errors.required" class="error">
+                        {{ 'form.error.required.password' | translate }}
+                      </div>
+                      <div *ngIf="passwordconfirm.errors.minlength"
+                           class="error">{{ 'form.error.minlength' | translate }}</div>
+                      <div *ngIf="passwordconfirm.errors.notmatched" class="error">
+                        {{ 'form.error.notmatched' | translate }}
+                      </div>
+                    </div>
+            </mat-form-field>
+            
+          </form>
+          <button mat-flat-button class="submit">Sign up</button>
+          </mat-card>
+      </mat-tab>
+    </mat-tab-group>
+  
     </div>
   </div>
   
   
   </div>
   
+  <!-- <mat-tab-group>
+    <mat-tab label="Quarantined"></mat-tab>
+    <mat-tab label="Volunteer"></mat-tab>
+  </mat-tab-group> -->
 
 <!-- 
 <mat-card class="card">
