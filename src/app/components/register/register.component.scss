@@ -114,7 +114,7 @@
 
         .rform,
         .pform {
-          max-height: 100%;
+          // max-height: 100%;
           max-width: 80%;
           font-family: 'Questrial', sans-serif;
           ::ng-deep .mat-form-field-wrapper {
@@ -131,7 +131,7 @@
 
           mat-form-field {
             color: #707070;
-            width: 100%;
+            width: 60%;
             margin: 10px 0px;
             position: relative;
             bottom: 15%;
@@ -150,11 +150,17 @@
           width: 80%;
           height: 30px;
           border-radius: 50px;
+          margin-top: 20px;
           padding: 0 0 3px 0;
           font-family: 'Questrial', sans-serif;
           font-size: 15px;
         }
-
+        //   .mat-tab-labels{
+        //     // justify-content: center;
+        //   }
+        //   ::ng-deep mat-tab-body {
+        //   justify-content: center;
+        // }
         // .submit {
         //   background-color: #6a8caf;
         //   color: white;
