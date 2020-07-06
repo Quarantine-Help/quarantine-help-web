@@ -1,6 +1,6 @@
-<mat-form-field appearance="fill" class="auto">
-  <mat-label> {{ 'form.auto-complete-address' | translate }} </mat-label>
-  <mat-icon matSuffix>location_searching</mat-icon>
+<mat-form-field floatLabel="never" appearance="legacy">
+  <mat-label>Address </mat-label>
+
   <input
     matInput
     type="text"
@@ -25,4 +25,4 @@
       <span class="mat-body">{{ option.shortAddress }}</span>
     </mat-option>
   </mat-autocomplete>
-</mat-form-field>
+ </mat-form-field>
