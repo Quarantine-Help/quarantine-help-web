@@ -34,7 +34,7 @@
             </div>
           </mat-form-field>
           <button mat-flat-button class="submit" [disabled]="!loginForm.valid">Log in</button>
-          <button mat-flat-button class="signup" (click)="toSignup()">Sign up</button>
+          <button mat-flat-button class="signup" [disableRipple]="true" (click)="toSignup()">Sign up</button>
         </form>
       </mat-card>
     </div>

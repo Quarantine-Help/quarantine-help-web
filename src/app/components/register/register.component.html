@@ -164,14 +164,14 @@
         <mat-card class="card">
           <form [formGroup]="basicInfoForm" class="rform">
             
-            <mat-form-field floatLabel="never" appearance="legacy">
+            <mat-form-field floatLabel="never" appearance="legacy" class="name">
               <mat-label> First Name </mat-label>
               <input matInput
                      placeholder="{{ 'form.firstname' | translate }}"
                      formControlName="firstName" required/>
             </mat-form-field>
         
-            <mat-form-field floatLabel="never" appearance="legacy">
+            <mat-form-field floatLabel="never" appearance="legacy" class="name">
               <mat-label> Last Name </mat-label>
                         <input matInput placeholder="{{ 'form.lastname' | translate }}"
                                formControlName="lastName" required/>
@@ -248,14 +248,14 @@
       <mat-card class="card">
           <form [formGroup]="basicInfoForm" class="rform">
             
-            <mat-form-field floatLabel="never" appearance="legacy">
+            <mat-form-field floatLabel="never" appearance="legacy" class="name">
               <mat-label> First Name </mat-label>
               <input matInput
                      placeholder="{{ 'form.firstname' | translate }}"
                      formControlName="firstName" required/>
             </mat-form-field>
         
-            <mat-form-field floatLabel="never" appearance="legacy">
+            <mat-form-field floatLabel="never" appearance="legacy" class="name">
               <mat-label> Last Name </mat-label>
                         <input matInput placeholder="{{ 'form.lastname' | translate }}"
                                formControlName="lastName" required/>
@@ -324,10 +324,12 @@
             
           </form>
           <button mat-flat-button (click)="registerParticipant()" class="submit">Sign up</button>
+          
           </mat-card>
+         
       </mat-tab>
     </mat-tab-group>
-  
+     <button mat-flat-button [disableRipple]="true" class="login">Log in</button>
     </div>
   </div>
   
