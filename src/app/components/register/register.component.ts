@@ -132,4 +132,8 @@ export class RegisterComponent implements OnInit {
       });
     }
   }
+
+  onLogin() {
+    this.routerMachinery.navigate(['/login']);
+  }
 }
