@@ -90,7 +90,7 @@ export class RegisterComponent implements OnInit {
     }
   }
 
-  get password(): string {
+  get password() {
     return this.additionalForm.get('password').value;
   }
 
