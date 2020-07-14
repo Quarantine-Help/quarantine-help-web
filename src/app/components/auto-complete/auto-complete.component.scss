@@ -1,12 +1,8 @@
-// mat-form-field {
-//   margin: 1%;
-//   width: 88%;
+mat-form-field {
+  margin: 1%;
+  width: 88%;
 
-//   @media only screen and (max-width: 600px) {
-//     width: 100%;
-//   }
-// }
-mat-label {
-  font-family: 'Questrial', sans-serif;
-  font-size: 14px;
+  @media only screen and (max-width: 600px) {
+    width: 100%;
+  }
 }
