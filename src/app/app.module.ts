@@ -37,6 +37,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { RegisterComponent } from './components/register/register.component';
+import { CockpitComponent } from './components/cockpit/cockpit.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { TranslateModule, TranslateLoader, TranslateService } from '@ngx-translate/core';
@@ -79,6 +80,7 @@ export function createTranslateLoader(http: HttpClient) {
     LoginComponent,
     HomeComponent,
     RegisterComponent,
+    CockpitComponent,
     HeaderComponent,
     AutoCompleteComponent,
   ],
