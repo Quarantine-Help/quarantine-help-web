@@ -15,7 +15,7 @@
     </div>
 
     <div class="register-main-2-card">
-      <mat-tab-group mat-stretch-tabs>
+      <mat-tab-group mat-stretch-tabs #tabRef>
         <mat-tab label="Quarantined">
           <mat-card class="card">
             <div class='forms'>
@@ -74,11 +74,9 @@
                     </div>
                   </div>
                 </mat-form-field>
-
               </form>
             </div>
-
-            <button mat-flat-button class="submit">Sign up</button>
+            <button mat-flat-button (click)="registerParticipant(tabRef.selectedIndex)" class="submit">Sign up</button>
           </mat-card>
         </mat-tab>
         <mat-tab label="Volunteer">
@@ -138,19 +136,13 @@
                     </div>
                   </div>
                 </mat-form-field>
-
               </form>
             </div>
-
-            <button mat-flat-button (click)="registerParticipant()" class="submit">Sign up</button>
-
+            <button mat-flat-button (click)="registerParticipant(tabRef.selectedIndex)" class="submit">Sign up</button>
           </mat-card>
-
         </mat-tab>
       </mat-tab-group>
       <button mat-flat-button [disableRipple]="true" class="login" (click)="onLogin()">Log in</button>
     </div>
   </div>
-
-
 </div>
