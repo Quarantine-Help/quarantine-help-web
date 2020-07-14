@@ -127,7 +127,7 @@ export class RegisterComponent implements OnInit {
 
   compare(): void {
     if (this.password !== this.passwordconfirm) {
-      this.passwordconfirm.setErrors({
+      this.additionalForm.get('passwordconfirm').setErrors({
         notmatched: true,
       });
     }
