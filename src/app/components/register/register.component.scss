@@ -69,25 +69,15 @@
       flex: 4;
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      align-items: center;
       flex-basis: content;
-      max-height: auto;
       mat-card {
-        display: flex;
-        flex-direction: column;
         box-shadow: none;
         max-width: 70%;
-        max-height: auto;
-        justify-content: center;
-        overflow: hidden;
-        padding: 0;
-        max-height: auto;
+        padding: 0px;
+        max-height: 100%;
         position: relative;
-        left: 20%;
-        .forms {
-          position: relative;
-          left: 14.4%;
-        }
+        left: 30%;
 
         form {
           max-width: 80%;
@@ -130,12 +120,11 @@
           height: 30px;
           border-radius: 50px;
           margin-top: 20px;
-          // padding: 0 0 3px 0;
+          padding: 0 0 3px 0;
           font-family: 'Questrial', sans-serif;
           font-size: 15px;
           position: relative;
-          // right: 10%;
-          left: 4%;
+          right: 10%;
         }
       }
     }
@@ -146,32 +135,26 @@
       height: 50px;
       font-family: 'Questrial', sans-serif;
       font-size: 15px;
-      // padding: 4% 0;
+      padding: 4% 0;
     }
     @media screen and (min-width: 1800px) {
-      .register-main-2-card {
-        max-width: 80%;
+      mat-tab-group {
+        margin: 0 20%;
+        max-height: 70%;
       }
 
       mat-card {
-        max-width: auto;
+        max-width: 100% left 20%;
         max-height: 70%;
         padding: 20% 0;
-        display: flex;
-        overflow: visible;
         position: relative;
         left: 0%;
         text-align: center;
-        .forms {
-          position: relative;
-          bottom: 85px;
-          left: 160px;
-        }
-        .submit {
-          position: relative;
-          left: 170px;
-          bottom: 60px;
-        }
+        padding-left: 15%;
+      }
+      .forms {
+        position: relative;
+        left: 40px;
       }
 
       mat-form-field {
@@ -200,11 +183,15 @@
           left: 5px;
         }
       }
-
+      .submit {
+        position: relative;
+        top: 20px;
+        left: 7px;
+      }
       .login {
         position: relative;
-        bottom: 170px;
-        left: 20px;
+        bottom: 80px;
+        left: 1px;
         z-index: 1;
         padding: 0;
       }
