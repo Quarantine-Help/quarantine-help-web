@@ -30,10 +30,8 @@
 
     &-heading {
       display: flex;
-      // padding-top: 12vh;
+      padding-top: 12vh;
       align-items: center;
-      max-height: 30%;
-      max-width: 100%;
 
       .icon {
         max-width: 100px;
@@ -49,7 +47,6 @@
     }
 
     &-card {
-      max-height: 70%;
       display: flex;
       align-items: center;
       flex-direction: column;
