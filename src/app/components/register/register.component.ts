@@ -19,7 +19,7 @@ import { ParticipantService } from '../../services/participant/participant.servi
 })
 export class RegisterComponent implements OnInit {
   public participant: Participant;
-  UserType = '';
+
   additionalForm = new FormGroup({
     // position: new FormControl('', [Validators.required]),
     password: new FormControl('', [Validators.required, Validators.minLength(6)]),
@@ -98,12 +98,7 @@ export class RegisterComponent implements OnInit {
     return this.additionalForm.get('passwordconfirm').value;
   }
 
-  registerParticipant(index: number) {
-    if (index === 0) {
-      this.UserType = 'AF';
-    } else if (index === 1) {
-      this.UserType = 'HL';
-    }
+  registerParticipant() {
     this.participant = new Participant();
     const participantBasicInformation = this.basicInfoForm.value;
     const participantUserInfo: User = {
@@ -118,7 +113,7 @@ export class RegisterComponent implements OnInit {
         longitude: participantBasicInformation.positionLongitude,
         latitude: participantBasicInformation.positionLatitude,
       },
-      type: this.UserType,
+      type: 'AF',
       country: participantBasicInformation.country,
       placeId: participantBasicInformation.placeId,
       postCode: participantBasicInformation.postcode,
