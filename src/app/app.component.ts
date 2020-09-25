@@ -7,7 +7,7 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'quarantinedhelp';
+  title = 'Quarantine Help';
 
   constructor(private translateMachinery: TranslateService) {
     translateMachinery.addLangs(['en', 'de']);

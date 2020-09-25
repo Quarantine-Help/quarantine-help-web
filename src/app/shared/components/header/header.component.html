@@ -3,25 +3,22 @@
     <div class="header_left__square"></div>
     <span class="header_left__brand">Quarantined <br />Helper</span>
   </div>
+
   <div class="header_right">
-    <div
-      class="language"
-      [matMenuTriggerFor]="menu"
-      [style.backgroundImage]="languageIcon[translateMachinery.currentLang]"
-    >{{translateMachinery.currentLang}}</div>
+    <div class="language" [matMenuTriggerFor]="menu"
+      [style.backgroundImage]="languageIcon[translateMachinery.currentLang]">{{translateMachinery.currentLang}}</div>
+
     <mat-menu #menu="matMenu" xPosition="before">
-      <button
-        class="langmenu"
-        mat-menu-item
-        *ngFor="let lang of translateMachinery.getLangs()"
-        (click)="translateMachinery.use(lang)"
-      >
+      <button class="langmenu" mat-menu-item *ngFor="let lang of translateMachinery.getLangs()"
+        (click)="translateMachinery.use(lang)">
         <div class="language language-sec" [style.backgroundImage]="languageIcon[lang]"></div>
         {{ lang }}
       </button>
-    </mat-menu> -->
-<span class="header_right__register" [routerLink]="'/login'"> {{ 'auth.login' | translate }} </span>
-<button *ngIf="!currentUser" mat-stroked-button class="header_right__register" [routerLink]="buttonInfo.url">
+    </mat-menu>
+
+    <span class="header_right__register" [routerLink]="'/login'"> {{ 'auth.login' | translate }} </span>
+
+    <button *ngIf="!currentUser" mat-stroked-button class="header_right__register" [routerLink]="buttonInfo.url">
       {{ buttonInfo?.title }}
     </button>
     <button *ngIf="currentUser" mat-stroked-button class="header_right__register">
