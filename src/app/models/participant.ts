@@ -1,5 +1,5 @@
 import { Deserializable } from './shared';
-
+import { User } from './user';
 export class Participant implements Deserializable {
   id?: number;
   user: User;

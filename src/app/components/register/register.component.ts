@@ -4,6 +4,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { TranslateService } from '@ngx-translate/core';
 import { Participant } from '../../models/participant';
+import { User } from '../../models/user';
 import { ParticipantService } from '../../services/participant/participant.service';
 
 @Component({
