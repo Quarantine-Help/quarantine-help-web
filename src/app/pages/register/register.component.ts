@@ -5,7 +5,7 @@ import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { TranslateService } from '@ngx-translate/core';
 import { Participant } from '../../models/participant';
 import { User } from '../../models/user';
-import { ParticipantService } from '../../services/participant/participant.service';
+import { ParticipantService } from '../../services/core-api/participant/participant.service';
 
 @Component({
   selector: 'app-register',

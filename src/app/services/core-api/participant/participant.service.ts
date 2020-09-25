@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Participant } from '../../models/participant';
-import { AuthService } from '../auth/auth.service';
-import { environment } from '../../../environments/environment';
+import { Participant } from '../../../models/participant';
+import { environment } from '../../../../environments/environment';
 import { map } from 'rxjs/operators';
 
 @Injectable({

@@ -1,0 +1,17 @@
+<!-- <mat-form-field floatLabel="never" appearance="legacy">
+  <mat-label>Address </mat-label>
+
+  <input matInput type="text" [matAutocomplete]="auto" [formControl]="addressSuggestionInput"
+    [errorStateMatcher]="matcher" placeholder="Enter location here" required />
+  <mat-error *ngIf="addressSuggestionInput.hasError('notHouseAddress')">
+    {{ 'form.error.notHouseAddress' | translate }}
+  </mat-error>
+
+  <mat-autocomplete #auto="matAutocomplete" autoActiveFirstOption>
+    <mat-option *ngFor="let option of searchOptions | async" [value]="option.shortAddress"
+      (onSelectionChange)="optionSelectionChange(option, $event)" [matTooltip]="option.fullAddress"
+      matTooltipShowDelay="1000">
+      <span class="mat-body">{{ option.shortAddress }}</span>
+    </mat-option>
+  </mat-autocomplete>
+</mat-form-field> -->
