@@ -1,9 +1,10 @@
 import { Injectable, Injector } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Participant } from '../../models/participant';
-import { AuthService } from '../auth/auth.service';
 import { map } from 'rxjs/operators';
-import { environment } from '../../../environments/environment';
+
+import { Participant } from '../../../models/participant';
+import { AuthService } from '../auth/auth.service';
+import { environment } from '../../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',

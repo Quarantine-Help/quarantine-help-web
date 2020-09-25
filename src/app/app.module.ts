@@ -8,15 +8,39 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateModule, TranslateLoader, TranslateService } from '@ngx-translate/core';
 
 import { AppRoutingModule } from './app-routing.module';
-import { AppMaterialModule } from './material.module';
-import { AuthService } from './services/auth/auth.service';
+import { SharedModule } from './shared/shared.module';
 
 import { AppComponent } from './app.component';
-import { LoginComponent } from './components/login/login.component';
-import { HomeComponent } from './components/home/home.component';
-import { RegisterComponent } from './components/register/register.component';
-import { HeaderComponent } from './components/header/header.component';
-import { AutoCompleteComponent } from './components/auto-complete/auto-complete.component';
+import { HomeComponent } from './pages/home/home.component';
+
+@NgModule({
+  declarations: [AppComponent, HomeComponent],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
+    AppRoutingModule,
+    SharedModule.forRoot(),
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: createTranslateLoader,
+        deps: [HttpClient],
+      },
+      isolate: false,
+    }),
+  ],
+  providers: [
+    {
+      provide: APP_INITIALIZER,
+      useFactory: appInitializerFactory,
+      deps: [TranslateService, Injector],
+      multi: true,
+    },
+  ],
+  bootstrap: [AppComponent],
+})
+export class AppModule {}
 
 export function appInitializerFactory(translate: TranslateService, injector: Injector) {
   return () =>
@@ -43,40 +67,3 @@ export function appInitializerFactory(translate: TranslateService, injector: Inj
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http);
 }
-
-@NgModule({
-  declarations: [
-    AppComponent,
-    LoginComponent,
-    HomeComponent,
-    RegisterComponent,
-    HeaderComponent,
-    AutoCompleteComponent,
-  ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    ReactiveFormsModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    HttpClientModule,
-    AppMaterialModule,
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: createTranslateLoader,
-        deps: [HttpClient],
-      },
-    }),
-  ],
-  providers: [
-    {
-      provide: APP_INITIALIZER,
-      useFactory: appInitializerFactory,
-      deps: [TranslateService, Injector],
-      multi: true,
-    },
-  ],
-  bootstrap: [AppComponent],
-})
-export class AppModule {}
